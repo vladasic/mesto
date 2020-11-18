@@ -2,6 +2,7 @@
     background-color: black;
     margin:0 auto;
     color: white;
+    position: relative
 }
 .header{
     max-width:1280px;
@@ -80,7 +81,6 @@
     cursor: pointer;
 }
 
-
 .portfile__button-big{
     justify-self: end;
     align-self: center;
@@ -91,10 +91,17 @@
     width: 150px;
     height: 50px;
 }
-
 .portfile__button-big:hover{
     opacity: 0.6;
     cursor: pointer;
+}
+.popup{
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+
 }
 .elements{
     margin: auto;

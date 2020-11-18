@@ -27,8 +27,6 @@
     display: grid;
     grid-template-columns: 168px 336px auto;
     padding-bottom: 50px;
-    
-    
 }
 
 .portfile__avatar{
@@ -40,7 +38,6 @@
 .portfile__info{
     display: grid;
     column-gap:  18px;
-
     grid-template-areas: 
     ' title button'
     ' subtitle .';
@@ -99,10 +96,8 @@
     opacity: 0.6;
     cursor: pointer;
 }
-/* тут возможная ошибка в max-width*/
 .elements{
     margin: auto;
-
     max-width:880px;
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -122,7 +117,7 @@
 }
 
 .element__img{
-    width: 282px;
+    max-width: 282px;
     border-radius: 10px 10px 0px 0px;
 }
 
@@ -166,4 +161,134 @@
     line-height: 22px;
     color: #545454;
     margin: 0;
+}
+
+@media screen and (max-width: 980px){
+    .portfile__info{
+        column-gap:  11px;
+    }
+    .portfile__title{
+        font-size: 36px;
+        width: 250px;
+    }
+    .portfile__subtitle{
+        font-size: 15px;
+    }
+    .portfile__button-big{
+        width: 100px;
+  }
+}
+
+@media screen and (max-width: 930px){
+    .portfile{
+        grid-template-columns: repeat(3,auto);
+    }
+    .elements{
+        max-width: 90%;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(3,1fr);
+        margin: auto;
+        }
+    .element__img{
+        max-width: 100%;
+    }
+}
+@media screen and (max-width: 760px){
+    .portfile{
+    grid-template-columns: repeat(2,auto);
+    grid-template-rows: repeat(2,auto);
+   }
+   .portfile__button-big{
+    justify-self: center;
+    width: 100%;
+    max-width: 500px;
+    grid-column: 2/3;
+   }
+}
+
+@media screen and (max-width: 590px){
+    .portfile{
+        grid-template-columns: repeat(3,auto);
+        grid-template-rows: repeat(3,auto);
+        row-gap: 15px;
+    }
+    .portfile__avatar{
+        grid-column: 1/4;
+    }
+    .portfile__info{
+        grid-column: 1/4;
+    }
+    .portfile__button-big{
+        justify-self: center;
+        width: 100%;
+        max-width: 400px;
+        grid-column: 1/4;
+    }
+}
+@media screen and (max-width: 490px){
+    .elements{
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: repeat(6,1fr);
+    }
+    .portfile__title{
+        font-size: 30px;
+        width: 220px;
+    }
+}
+@media screen and (max-width: 320px){
+    .header{
+      width: 100%;
+      padding-bottom: 38.25px;
+    }
+    .header__logo{
+      margin-left: 27px;
+      margin-top:28px;
+    }
+    .header__line{
+        margin-top:31.6px;
+    }
+
+    .portfile{
+        width: 100%;
+        row-gap:22px;
+        padding-bottom:36px ;
+
+    }
+
+    .portfile__avatar{
+        justify-self: center;
+    }
+
+    .portfile__info{
+        justify-self: center;
+        column-gap: 10px;
+        row-gap: 14px;
+        grid-template-areas: 
+        ' title button'
+        ' subtitle subtitle';
+    }
+    .portfile__title{
+        width: 189px;
+        font-size: 27px;
+        line-height: 33px;
+    }
+    .portfile__subtitle{
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+    
+    .portfile__button-big{
+        margin-top:14px ;
+        width: 88.13%;
+    }
+    .elements{
+        width:88%;
+        column-gap: 20px;
+        padding-bottom: 48px;
+    }
+    .footer{
+        width: 88.13%;
+        padding-bottom: 48px;
+    }
 }

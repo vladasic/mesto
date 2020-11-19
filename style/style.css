@@ -1,4 +1,8 @@
 .page{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
     background-color: black;
     margin:0 auto;
     color: white;
@@ -96,12 +100,117 @@
     cursor: pointer;
 }
 .popup{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position:fixed;
     top:0px;
     left:0px;
     width:100vw;
     height:100vh;
+}
 
+.popup::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: black;
+    opacity: 0.5;
+ }
+.popup_opened{
+    display: flex;
+}
+.popup__close-icon{
+    position: absolute;
+    width: 40px;
+    top: -15%;
+    left: 96%;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+}
+
+.popup__close-icon:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+.popup__close-icon:active, .popup__close-icon:focus { outline: none; }
+
+
+
+
+.popup__container{
+    position:fixed;
+    width: 430px;
+    height: 330px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+.popup__main-container{
+    width: 83.26%; 
+    margin: auto;
+}
+.popup__heading{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    margin: 0;
+    margin-top: 34px;
+    padding-bottom:24px;
+}
+.popup__input-container{
+    border: 0;
+    padding: 0;
+}
+.popup__item{
+    width: 100%;
+    border:0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    padding-bottom: 13px;
+}
+.popup__input-container_ctrl_texts{
+    margin-top: 30px;
+}
+.popup__handlers{
+    border: 0;
+    width: 358px;
+    margin: auto;
+    margin-top:37px;
+    padding: 0;
+
+}
+
+.popup__button{
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: white;
+
+}
+.popup__button:hover{
+opacity: 0.8;
+cursor: pointer;
 }
 .elements{
     margin: auto;

@@ -25,8 +25,23 @@
             </div>
             <button type ="button" name = "button2" class="portfile__button-big">
                 <img src = "./images/Vector.svg" alt = "up" ></button>
-              <div class="popup">
-                <form class="popup__container"></form>
+              <div class="popup popup_opened">                
+                <form class="popup__container">
+                  <button type ="button" name = "button2" class="popup__close-icon">
+                    <img src = "./images/close_Icon.svg" alt = "up" ></button>
+                  <div class="popup__main-container">
+                    <h2 class="popup__heading">Редактировать профиль</h2>
+                    <fieldset class="popup__input-container popup__input-container_ctrl_texts">
+                      <label for="heading"></label>
+                      <input type="text" id="heading" value="Жак-Ив Кусто" class="popup__item"></fieldset>
+                    <fieldset class="popup__input-container popup__input-container_ctrl_texts">
+                    <label for="subheading"></label>
+                    <input type="text" value="Исследователь океана" id="subheading" class="popup__item"></fieldset>
+                  </div>
+                  <fieldset class="popup__handlers">
+                    <input type="submit" value="Сохранить" class="popup__button">
+                  </fieldset>
+                </form>
               </div>
         </section>
         <section class="elements">
@@ -73,7 +88,7 @@
           <div class="element">
             <img class="element__img" alt="Карачаевск" src="./images/karchaevsk.jpg">
               <div class="element__group">
-                <p class="element__text">Карачаево-Ч...</p>
+                <p class="element__text">Карачаево-Черкессия</p>
                 <button type ="button" name = "button3" class="element__button">
                     <img src = "./images/element__button.svg" alt = "up" ></button> 
               </div>

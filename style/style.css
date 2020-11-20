@@ -121,9 +121,10 @@
     background: black;
     opacity: 0.5;
  }
-.popup_opened{
+
+/*.popup_opened{
     display: flex;
-}
+}*/
 .popup__close-icon{
     position: absolute;
     width: 40px;
@@ -209,8 +210,8 @@
 
 }
 .popup__button:hover{
-opacity: 0.8;
-cursor: pointer;
+    opacity: 0.8;
+    cursor: pointer;
 }
 .elements{
     margin: auto;
@@ -222,6 +223,7 @@ cursor: pointer;
     row-gap: 20px;
     padding-bottom: 66px;
     
+    
 }
 
 .element{
@@ -230,6 +232,7 @@ cursor: pointer;
     height: 361px;
     background-color: white;
     border-radius: 10px;
+
 }
 
 .element__img{
@@ -249,7 +252,8 @@ cursor: pointer;
     font-weight: 900;
     font-size: 24px;
     line-height: 29px;
-    color: black
+    color: black;
+
 }
 
 .element__button{
@@ -341,6 +345,31 @@ cursor: pointer;
         grid-column: 1/4;
     }
 }
+@media screen and (max-width: 540px){
+    .popup__close-icon{
+        width: 26px;
+        top: -18%;
+        left: 81%;
+    }
+    .popup__container{
+        width: 282px;
+        height: 322px;
+    }
+    .popup__heading{
+        font-size: 18px;
+        line-height: 22px;
+        padding-bottom:40px;
+        margin-top: 25px;
+    }
+    .popup__handlers{
+        width: 238px; 
+        margin-top:45px;
+    }
+    .popup__button{
+        height: 48px;
+
+    }
+}
 @media screen and (max-width: 490px){
     .elements{
         grid-template-columns: repeat(1,1fr);
@@ -398,6 +427,7 @@ cursor: pointer;
         margin-top:14px ;
         width: 88.13%;
     }
+
     .elements{
         width:88%;
         column-gap: 20px;

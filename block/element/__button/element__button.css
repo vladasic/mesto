@@ -2,7 +2,7 @@
     border: 0px;
     background-color: white;
 }
-.element__button:active, .element__button:focus { outline: none; };
+.element__button:active, .element__button:focus { outline: none; }
 
 .element__button:hover{
     opacity: 0.8;

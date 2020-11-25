@@ -1,0 +1,37 @@
+.portfile{
+    max-width:1280px;
+    margin: auto;
+    width: 68.75%;
+    display: grid;
+    grid-template-columns: 168px 336px auto;
+    padding-bottom: 50px;
+}
+
+@media screen and (max-width: 930px){
+    .portfile{
+        grid-template-columns: repeat(3,auto);
+    }
+}
+
+@media screen and (max-width: 760px){
+    .portfile{
+    grid-template-columns: repeat(2,auto);
+    grid-template-rows: repeat(2,auto);
+   }
+}
+
+@media screen and (max-width: 590px){
+    .portfile{
+        grid-template-columns: repeat(3,auto);
+        grid-template-rows: repeat(3,auto);
+        row-gap: 15px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .portfile{
+        width: 100%;
+        row-gap:22px;
+        padding-bottom:36px ;
+    }
+}

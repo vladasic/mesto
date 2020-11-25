@@ -1,0 +1,33 @@
+.portfile__title{
+    margin: 0;
+    align-self: center;
+    width: 294px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    grid-area: title;
+}
+
+@media screen and (max-width: 980px){
+    .portfile__title{
+        font-size: 36px;
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 490px){
+    .portfile__title{
+        font-size: 30px;
+        width: 220px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .portfile__title{
+        width: 189px;
+        font-size: 27px;
+        line-height: 33px;
+    }
+}

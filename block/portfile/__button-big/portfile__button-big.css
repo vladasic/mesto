@@ -1,0 +1,45 @@
+.portfile__button-big{
+    justify-self: end;
+    align-self: center;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-color:black;
+    width: 150px;
+    height: 50px;
+}
+.portfile__button-big:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.@media screen and (max-width: 980px){
+    .portfile__button-big{
+        width: 100px;
+  }
+}
+
+@media screen and (max-width: 760px){
+   .portfile__button-big{
+    justify-self: center;
+    width: 100%;
+    max-width: 500px;
+    grid-column: 2/3;
+   }
+}
+
+@media screen and (max-width: 590px){
+    .portfile__button-big{
+        justify-self: center;
+        width: 100%;
+        max-width: 400px;
+        grid-column: 1/4;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .portfile__button-big{
+        margin-top:14px ;
+        width: 88.13%;
+    }
+}

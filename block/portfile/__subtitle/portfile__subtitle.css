@@ -1,0 +1,23 @@
+.portfile__subtitle{
+    margin: 0;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    grid-area: subtitle;
+}
+
+@media screen and (max-width: 980px){
+    .portfile__subtitle{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .portfile__subtitle{
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+ }

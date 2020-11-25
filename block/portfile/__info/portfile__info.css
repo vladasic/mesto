@@ -1,0 +1,30 @@
+.portfile__info{
+    display: grid;
+    column-gap:  18px;
+    grid-template-areas: 
+    ' title button'
+    ' subtitle .';
+}
+
+@media screen and (max-width: 980px){
+    .portfile__info{
+        column-gap:  11px;
+    }
+}
+
+@media screen and (max-width: 590px){
+    .portfile__info{
+        grid-column: 1/4;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .portfile__info{
+        justify-self: center;
+        column-gap: 10px;
+        row-gap: 14px;
+        grid-template-areas: 
+        ' title button'
+        ' subtitle subtitle';
+    }
+}

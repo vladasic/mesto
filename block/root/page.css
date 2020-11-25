@@ -1,0 +1,10 @@
+.page{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    background-color: black;
+    margin:0 auto;
+    color: white;
+    position: relative
+}

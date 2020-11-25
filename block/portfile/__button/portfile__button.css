@@ -1,0 +1,13 @@
+.portfile__button{
+    grid-area: button;
+    align-self:center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    background-color: black;
+}
+.portfile__button:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}

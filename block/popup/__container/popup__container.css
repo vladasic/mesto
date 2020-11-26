@@ -1,5 +1,8 @@
 .popup__container{
     position:fixed;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
     width: 430px;
     height: 330px;
     background: #FFFFFF;

@@ -9,7 +9,8 @@
     line-height: 22px;
     text-align: center;
     color: white;
-
+    margin-bottom: 37px;
+    
 }
 .popup__button:hover{
     opacity: 0.8;

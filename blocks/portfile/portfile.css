@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: 168px 336px auto;
     padding-bottom: 50px;
+    margin-top:40px;
 }
 
 @media screen and (max-width: 930px){

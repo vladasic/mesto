@@ -1,0 +1,6 @@
+  .portfile__button_image{
+    background-image: url(../../../../images/vector_button-mini.svg);
+    width: 10px;
+    height: 10px;
+    background-repeat: no-repeat;
+}

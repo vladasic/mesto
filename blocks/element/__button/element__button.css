@@ -4,7 +4,9 @@
 }
 .element__button:active, .element__button:focus { outline: none; }
 
+
 .element__button:hover{
     opacity: 0.8;
     cursor: pointer;
 }
+

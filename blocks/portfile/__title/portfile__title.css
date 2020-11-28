@@ -1,4 +1,7 @@
 .portfile__title{
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
     margin: 0;
     align-self: center;
     width: 294px;

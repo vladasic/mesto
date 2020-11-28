@@ -29,5 +29,5 @@ function formClosed() {
 
 portfileButton.addEventListener('click' ,popupAdd);
 popupCloseIcon.addEventListener('click',popupRemove);
-popupContainer.addEventListener('submit', formSubmitHandler)
+popupContainer.addEventListener('click', formSubmitHandler)
 popupButton.addEventListener('click', formClosed)

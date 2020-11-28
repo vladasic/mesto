@@ -1,0 +1,6 @@
+@media screen and (max-width:320px){
+    .portfile__button-big_image{
+        width: 16px;
+        height: 16px;
+    }  
+}

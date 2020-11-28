@@ -11,6 +11,7 @@
 @import url(../blocks/portfile/__button/portfile__button.css);
 @import url(../blocks/portfile/__button/__image/portfile__button_image.css);
 @import url(../blocks/portfile/__button-big/portfile__button-big.css);
+@import url(../blocks/portfile/__button-big/_image/portfile__button-big_image.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__img/element__img.css);

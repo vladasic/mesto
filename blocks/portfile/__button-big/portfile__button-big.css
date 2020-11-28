@@ -13,7 +13,7 @@
     cursor: pointer;
 }
 
-.@media screen and (max-width: 980px){
+@media screen and (max-width: 980px){
     .portfile__button-big{
         width: 100px;
   }
@@ -31,7 +31,6 @@
 @media screen and (max-width: 590px){
     .portfile__button-big{
         justify-self: center;
-        width: 100%;
         max-width: 400px;
         grid-column: 1/4;
     }

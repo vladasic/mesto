@@ -13,7 +13,7 @@ popupCloseIcon.addEventListener('click',popupToggle);
 
 
 function popupToggle(){
-    popup.classList.toggle('popup__opened')
+    popup.classList.toggle('popup_opened')
 }
 
 function formSubmitHandler (event) {

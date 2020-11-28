@@ -1,4 +1,4 @@
-  .portfile__button_image{
+  .portfile__image{
     background-image: url(../../../../images/vector_button-mini.svg);
     width: 10px;
     height: 10px;
@@ -9,7 +9,7 @@
 
 }
 @media screen and (max-width: 320px){
-.portfile__button_image{
+.portfile__image{
   width: 7.5px;
   height: 7.5px;
 }

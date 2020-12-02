@@ -25,3 +25,9 @@
         margin-top:45px;
     }
 }
+@media screen and (max-width:320px){
+    .popup__button{
+        height: 46px;
+        margin-bottom:25px;
+    }
+}

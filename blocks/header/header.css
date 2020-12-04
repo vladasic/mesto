@@ -3,7 +3,7 @@
     margin: auto;
     width: 68.75%;
     padding-bottom:41px;
-    border-bottom: 1px solid  rgba(84, 84, 84, 0.5);;
+    border-bottom: 1px solid  rgba(84, 84, 84, 0.5);
 }
 
 @media screen and (max-width: 320px){

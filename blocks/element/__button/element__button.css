@@ -9,7 +9,7 @@
     align-self: center;
 }
 .element__button:active, .element__button:focus {
-     outline: none; 
+     outline: none;
      background-image: url(../../../images/black-love.svg);
      background-repeat: no-repeat;
      width: 21px;

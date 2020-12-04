@@ -1,7 +1,6 @@
 .element__button{
     border: 0px;
     background-color: white;
-    background-image: url(../../images/element__button.svg);
     background-repeat: no-repeat;
     width: 21px;
     height: 19px;
@@ -10,7 +9,6 @@
 }
 .element__button:active, .element__button:focus {
      outline: none; 
-     background-image: url(../../images/black-love.svg);
      background-repeat: no-repeat;
      width: 21px;
      height: 19px;

@@ -6,7 +6,6 @@ let inputTop = document.querySelector('.popup__item_position_top');
 let inputBottom = document.querySelector('.popup__item_position_bottom');
 let portfileTitle = document.querySelector('.portfile__title');
 let popupContainer = popup.querySelector('.popup__container');
-let popupButton = popup.querySelector('.popup__button')
 
 
 function popupAdd(){
@@ -23,7 +22,7 @@ function formSubmitHandler (event) {
     event.preventDefault();
     portfileTitle.textContent = inputTop.value;
     portfileSubttitle.textContent = inputBottom.value;
-    popupButton.addEventListener('click', popupRemove);
+    popupRemove();
 }
 
 

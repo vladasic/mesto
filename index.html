@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./pages/index.css">
   <link rel="shortcut icon" href="./images/favicon.png" type="image/png">
 
@@ -29,63 +28,8 @@
         <button type="button" name="button2" class="portfile__button-big">
           <img src="./images/vector.svg" class="portfile__image-button" alt="кнопка"></button>
       </section>
-      <section class="elements">
-        <article class="element">
-          <button type="button" name="button7" class="element__trash">
-          </button>
-          <img class="element__img" alt="Карачаевск" src="./images/karchaevsk.jpg">
-          <div class="element__group">
-            <h3 class="element__text">Карачаевск</h3>
-            <button type="button" name="button3" class="element__button">
-            </button>
-          </div>
-        </article>
-        <article class="element">
-          <button type="button" name="button7" class="element__trash">
-          </button>
-          <img class="element__img" alt="Гора Эльбрус" src="./images/elbrus.jpg">
-          <div class="element__group">
-            <h3 class="element__text">Гора Эльбрус</h3>
-            <button type="button" name="button3" class="element__button"></button>
-          </div>
-        </article>
-        <article class="element">
-          <button type="button" name="button7" class="element__trash">
-          </button>
-          <img class="element__img" alt="Домбай" src="./images/dombai.jpg">
-          <div class="element__group">
-            <h3 class="element__text">Домбай</h3>
-            <button type="button" name="button3" class="element__button"></button>
-          </div>
-        </article>
-        <article class="element">
-          <button type="button" name="button7" class="element__trash">
-          </button>
-          <img class="element__img" alt="Гора Эльбрус" src="./images/elbrus.jpg">
-          <div class="element__group">
-            <h3 class="element__text">Гора Эльбрус</h3>
-            <button type="button" name="button3" class="element__button"></button>
-          </div>
-        </article>
-        <article class="element">
-          <button type="button" name="button7" class="element__trash">
-          </button>
-          <img class="element__img" alt="Домбай" src="./images/dombai.jpg">
-          <div class="element__group">
-            <h3 class="element__text">Домбай</h3>
-            <button type="button" name="button3" class="element__button"></button>
-          </div>
-        </article>
-        <article class="element">
-          <button type="button" name="button7" class="element__trash">
-          </button>
-          <img class="element__img" alt="Карачаевск" src="./images/karchaevsk.jpg">
-          <div class="element__group">
-            <h3 class="element__text">Карачаевск</h3>
-            <button type="button" name="button3" class="element__button"></button>
-          </div>
-        </article>
-      </section>
+      <ul class="elements">
+      </ul>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -112,9 +56,22 @@
             <input type="text" name="firstname" value="Название" class="popup__item popup-add__item_position_top">
             <input type="text" name="lastname" value="Ссылка на картинку" class="popup__item popup-add__item_position_bottom">
         </div>
-          <button type="submit" name="button6" class="popup__button">создать</button>
+          <button type="button" name="button6" class="popup__button popup__button-add-image">создать</button>
       </form>
     </section>
+
+
+    <template class='template'>
+    <li class="element">
+      <button type="button" name="button7" class="element__trash">
+      </button>
+      <img class="element__img" alt="" src="">
+      <div class="element__group">
+        <h3 class="element__text"></h3>
+        <button type="button" name="button3" class="element__button"></button>
+      </div>
+    </li>
+  </template>
 
   </div>
   <script src="JavaScript/javaScript.js"></script>

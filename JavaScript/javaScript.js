@@ -42,7 +42,82 @@ function popupTwoRemove(){
 portfileButton.addEventListener('click' ,popupAdd);
 popupCloseIcon.addEventListener('click',popupRemove);
 popupContainer.addEventListener('submit', formSubmitHandler)
-// вызовы для открытитя и закрытия второго попапа
+// вызовы для открытитя второго попапа
 portfileButtonBig.addEventListener('click',popupTwoAdd)
 // вызов закрытия второго попапа через иконку
 popupCloseSecond.addEventListener('click',popupTwoRemove)
+
+
+const initialCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинск',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+]; 
+
+// то куда мы добавляем наш HTML
+const listContainerElements = document.querySelector('.elements');
+const popupAddTop = document.querySelector('.popup-add__item_position_top');
+const popupAddBottom = document.querySelector('.popup-add__item_position_bottom')
+const templateLateElement = document.querySelector('.template')
+
+// динмаический рендеринг содержимого на старнице
+
+function renderList(){
+    const listItems  = initialCards.map(composeItem);
+
+    listContainerElements.append(...listItems)
+}
+// Это оптимизация кода, изначально это было вместе с newHTML
+
+
+function composeItem(item){
+    const newItem = templateLateElement.content.cloneNode(true);
+    const headerElement = newItem.querySelector('.element__text');
+    const imageElement = newItem.querySelector('.element__img')
+    headerElement.textContent = item.name;
+    imageElement.src = item.link;
+    const removButton = newItem.querySelector('.element__trash');
+    removButton.addEventListener('click',removeElement)
+    return newItem;
+}
+
+function removeElement(e){
+    const targertElement = e.target;
+    const targetItem = targertElement.closest('.element');
+    targetItem.remove();
+}
+
+function bindAddItemListener(){
+    const addButtonElements = document.querySelector('.popup__button-add-image')
+    addButtonElements.addEventListener('click',addNewItem)
+}
+function addNewItem(){
+    const popupAddTopText = popupAddTop.value;
+    const popupAddBottomImage = popupAddBottom.value;   
+    const newItem = composeItem({name: popupAddTopText , link: popupAddBottomImage});
+    listContainerElements.prepend(newItem);
+}
+
+renderList()
+bindAddItemListener();

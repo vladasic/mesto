@@ -1,0 +1,9 @@
+.image__close-width{
+    width: 40px;
+}
+
+@media screen and (max-width: 920px){
+    .image__close-width{
+        width: 33px;
+    }
+}

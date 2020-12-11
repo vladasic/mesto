@@ -1,0 +1,19 @@
+.image__opened{
+    max-width: 100%;
+    max-height: 100%;
+    width: 816px;
+    height: 540px;
+}
+
+@media screen and (max-width: 920px){
+    .image__opened{
+        max-width: 433px;    
+    }
+}
+
+@media screen and (max-width: 540px){    
+    .image__opened{
+        max-width: 240px;    
+        height: 299px;
+    }
+}

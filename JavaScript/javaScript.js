@@ -10,6 +10,11 @@ let popupAddImage = document.querySelector('.popup-add');
 let portfileButtonBig = document.querySelector('.portfile__button-big')
 // Иконка закрытия для второго попапа
 let popupCloseSecond = document.querySelector('.popup__close-icon_second')
+let popupImage = document.querySelector('.image')
+let closeImageButton = document.querySelector('.image__close')
+let imageFull = document.querySelector('.image__opened')
+let imageText = document.querySelector('.image__text')
+
 
 // Эта функция открывает основной попап
 function popupAdd(){
@@ -45,8 +50,8 @@ popupContainer.addEventListener('submit', formSubmitHandler)
 // вызовы для открытитя второго попапа
 portfileButtonBig.addEventListener('click',popupTwoAdd)
 // вызов закрытия второго попапа через иконку
-popupCloseSecond.addEventListener('click',popupTwoRemove)
-
+popupCloseSecond.addEventListener('click',popupTwoRemove);
+closeImageButton.addEventListener('click', removePopupImage)
 
 const initialCards = [
     {
@@ -91,6 +96,8 @@ function renderList(){
 // Это оптимизация кода, изначально это было вместе с newHTML
 
 
+
+
 function composeItem(item){
     const newItem = templateLateElement.content.cloneNode(true);
     const headerElement = newItem.querySelector('.element__text');
@@ -98,9 +105,22 @@ function composeItem(item){
     headerElement.textContent = item.name;
     imageElement.src = item.link;
     const removButton = newItem.querySelector('.element__trash');
-    removButton.addEventListener('click',removeElement)
+    removButton.addEventListener('click',removeElement);
+    imageElement.addEventListener('click',openPopupImage);
+    imageElement.addEventListener('click', function(event){
+        imageFull.src = imageElement.src
+        imageText.textContent = headerElement.textContent
+    });
     return newItem;
 }
+
+
+inputTop.value = portfileTitle.textContent;
+inputBottom.value = portfileSubttitle.textContent;
+
+
+
+
 
 function removeElement(e){
     const targertElement = e.target;
@@ -110,14 +130,29 @@ function removeElement(e){
 
 function bindAddItemListener(){
     const addButtonElements = document.querySelector('.popup__button-add-image')
-    addButtonElements.addEventListener('click',addNewItem)
+    addButtonElements.addEventListener('click',addNewItem);
+    
 }
 function addNewItem(){
     const popupAddTopText = popupAddTop.value;
     const popupAddBottomImage = popupAddBottom.value;   
     const newItem = composeItem({name: popupAddTopText , link: popupAddBottomImage});
     listContainerElements.prepend(newItem);
+    popupTwoRemove()
+    
+}
+
+function openPopupImage(){
+    popupImage.classList.add('popup_opened')
+}
+
+function removePopupImage(){
+    popupImage.classList.remove('popup_opened')
 }
 
 renderList()
 bindAddItemListener();
+
+
+
+

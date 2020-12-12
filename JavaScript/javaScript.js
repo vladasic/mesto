@@ -101,12 +101,18 @@ function renderList(){
 function composeItem(item){
     const newItem = templateLateElement.content.cloneNode(true);
     const headerElement = newItem.querySelector('.element__text');
-    const imageElement = newItem.querySelector('.element__img')
+    const imageElement = newItem.querySelector('.element__img');
+    const elementButton = newItem.querySelector('.element__button')
+    const elementButtonBlack = newItem.querySelector('.element__button_add_black-icon')
+    const removButton = newItem.querySelector('.element__trash');
     headerElement.textContent = item.name;
     imageElement.src = item.link;
-    const removButton = newItem.querySelector('.element__trash');
+    
     removButton.addEventListener('click',removeElement);
     imageElement.addEventListener('click',openPopupImage);
+    elementButton.addEventListener('click', function(){
+        elementButton.classList.toggle('element__button_add_black-icon');
+    })
     imageElement.addEventListener('click', function(event){
         imageFull.src = imageElement.src
         imageText.textContent = headerElement.textContent

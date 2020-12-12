@@ -19,6 +19,7 @@
 @import url(../blocks/element/__group/element__group.css);
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__button/element__button.css);
+@import url(../blocks/element/__button/_add_black-icon/element__button_add_black-icon.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup-add/popup-add.css);

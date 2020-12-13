@@ -1,0 +1,23 @@
+.popup-add__close-icon{
+    position: absolute;
+    width: 40px;
+    top: -15%;
+    left: 96%;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+}
+
+.popup-add__close-icon:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+.popup-add__close-icon:active, .popup-add__close-icon:focus { outline: none; }
+
+
+@media screen and (max-width: 540px){
+    .popup-add__close-icon{
+        width: 26px;
+        top: -18%;
+        left: 81%;
+    }
+}

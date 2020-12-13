@@ -9,7 +9,7 @@ let popupContainer = popup.querySelector('.popup__container');
 let popupAddImage = document.querySelector('.popup-add');
 let portfileButtonBig = document.querySelector('.portfile__button-big')
 // Иконка закрытия для второго попапа
-let popupCloseSecond = document.querySelector('.popup__close-icon_second')
+let popupCloseSecond = document.querySelector('.popup-add__close-icon_second')
 let popupImage = document.querySelector('.image')
 let closeImageButton = document.querySelector('.image__close')
 let imageFull = document.querySelector('.image__opened')
@@ -135,7 +135,7 @@ function removeElement(e){
 }
 
 function bindAddItemListener(){
-    const addButtonElements = document.querySelector('.popup__button-add-image')
+    const addButtonElements = document.querySelector('.popup-add__button-add-image')
     addButtonElements.addEventListener('click',addNewItem);
     
 }

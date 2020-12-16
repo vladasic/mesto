@@ -1,4 +1,4 @@
-.portfile__subtitle{
+.profile__subtitle{
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -12,13 +12,13 @@
 }
 
 @media screen and (max-width: 980px){
-    .portfile__subtitle{
+    .profile__subtitle{
         font-size: 15px;
     }
 }
 
 @media screen and (max-width: 320px){
-    .portfile__subtitle{
+    .profile__subtitle{
         font-size: 14px;
         line-height: 17px;
         text-align: center;

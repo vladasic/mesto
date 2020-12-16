@@ -1,4 +1,4 @@
-.portfile{
+.profile{
     max-width: 880px;
     margin: auto;
     width: 68.75%;
@@ -9,20 +9,20 @@
 }
 
 @media screen and (max-width: 930px){
-    .portfile{
+    .profile{
         grid-template-columns: repeat(3,auto);
     }
 }
 
 @media screen and (max-width: 760px){
-    .portfile{
+    .profile{
     grid-template-columns: repeat(2,auto);
     grid-template-rows: repeat(2,auto);
    }
 }
 
 @media screen and (max-width: 590px){
-    .portfile{
+    .profile{
         grid-template-columns: repeat(3,auto);
         grid-template-rows: repeat(3,auto);
         row-gap: 15px;
@@ -30,7 +30,7 @@
 }
 
 @media screen and (max-width: 320px){
-    .portfile{
+    .profile{
         width: 100%;
         row-gap:22px;
         padding-bottom:36px;

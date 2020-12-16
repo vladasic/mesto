@@ -1,4 +1,4 @@
-.portfile__button{
+.profile__button{
     grid-area: button;
     align-self:center;
     width: 24px;
@@ -7,12 +7,12 @@
     box-sizing: border-box;
     background-color: black;
 }
-.portfile__button:hover{
+.profile__button:hover{
     opacity: 0.6;
     cursor: pointer;
 }
 @media screen and (max-width:320px){
-    .portfile__button{
+    .profile__button{
         width: 18px;
         height: 18px;
     }  

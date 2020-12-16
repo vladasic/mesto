@@ -17,16 +17,16 @@
 
     </header>
     <main>
-      <section class="portfile">
-        <img class="portfile__avatar" alt="автор" src="./images/avatar_jak.jpg">
-        <div class="portfile__info">
-          <h1 class="portfile__title">Жак-Ив Кусто</h1>
-          <p class="portfile__subtitle">Исследователь океана</p>
-          <button type="button" aria-label="open" name="button1" class="portfile__button portfile__image">
+      <section class="profile">
+        <img class="profile__avatar" alt="автор" src="./images/avatar_jak.jpg">
+        <div class="profile__info">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <p class="profile__subtitle">Исследователь океана</p>
+          <button type="button" aria-label="open" name="button-rename" class="profile__button profile__image">
           </button>
         </div>
-        <button type="button" name="button2" class="portfile__button-big">
-          <img src="./images/vector.svg" class="portfile__image-button" alt="кнопка"></button>
+        <button type="button" name="button-add-new-img" class="profile__button-big">
+          <img src="./images/vector.svg" class="profile__image-button" alt="кнопка"></button>
       </section>
       <ul class="elements">
       </ul>
@@ -38,22 +38,22 @@
 
     <section class="popup popup_type_user-profile">
       <form class="popup__container popup__container_form_user" name="Form" method="post" action="mailto:vlad.rastik@yandex.ru">
-        <button type="button" name="button2" class="popup__close-icon popup__close-icon_user-profile">
-          <img src="./images/close_icon.svg" class='popup__close-width' alt="выход"></button>
+        <button type="button" name="button-user-popup-close-icon" class="popup__close-icon popup__close-icon_user-profile">
+          <img src="./images/close_icon.svg"  alt="выход"></button>
         <div class="popup__main-container">
           <h2 class="popup__heading">Редактировать профиль</h2>
           <input type="text" name="firstname" value="Жак-Ив Кусто" class="popup__item popup__item_user-position_top">
           <input type="text" name="lastname" value="Исследователь океана"
             class="popup__item popup__item_user-position_bottom">
         </div>
-        <button type="submit" name="button4" class="popup__button">Сохранить</button>
+        <button type="submit" name="button-user-popup-save" class="popup__button">Сохранить</button>
       </form>
     </section>
 
     <section class="popup popup_type_add-images">
       <form class="popup__container" name="Form" method="post" action="mailto:vlad.rastik@yandex.ru">
-        <button type="button" name="button5" class="popup__close-icon popup__close-icon_second">
-          <img src="./images/close_icon.svg" class='popup__close-width' alt="выход"></button>
+        <button type="button" name="button-image-close-icon" class="popup__close-icon popup__close-icon_second">
+          <img src="./images/close_icon.svg"  alt="выход"></button>
         <div class="popup__main-container">
           <h2 class="popup__heading">Новое место</h2>
           <input type="text" name="firstname" placeholder="Название" value=""
@@ -61,7 +61,7 @@
           <input type="text" name="lastname" placeholder="Ссылка на картинку" value=""
             class="popup__item popup__item_add-images-position_bottom">
         </div>
-        <button type="button" name="button6" class="popup__button popup__button-add-image">создать</button>
+        <button type="button" name="button-image-popup-add" class="popup__button popup__button-add-image">создать</button>
       </form>
     </section>
 
@@ -79,7 +79,7 @@
 
     <div class="popup popup_type_big-images">
       <div class="popup__image-container">
-        <button type="button" name="button8" class="popup__image-close popup__image-close_icon">
+        <button type="button" name="button-big-image-popup-close" class="popup__image-close popup__image-close_icon">
           <img src="./images/close_icon.svg" class='popup__close-width' alt="выход">
         </button>
         <img src='./images/add_Button.svg' alt="изображение" class='popup__image-opened popup__image-opened_full '>

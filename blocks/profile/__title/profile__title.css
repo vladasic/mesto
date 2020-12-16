@@ -1,4 +1,4 @@
-.portfile__title{
+.profile__title{
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -14,21 +14,21 @@
 }
 
 @media screen and (max-width: 980px){
-    .portfile__title{
+    .profile__title{
         font-size: 36px;
         width: 250px;
     }
 }
 
 @media screen and (max-width: 490px){
-    .portfile__title{
+    .profile__title{
         font-size: 30px;
         width: 220px;
     }
 }
 
 @media screen and (max-width: 320px){
-    .portfile__title{
+    .profile__title{
         width: 189px;
         font-size: 27px;
         line-height: 33px;

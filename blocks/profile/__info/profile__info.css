@@ -1,4 +1,4 @@
-.portfile__info{
+.profile__info{
     display: grid;
     column-gap:  18px;
     grid-template-areas: 
@@ -7,19 +7,19 @@
 }
 
 @media screen and (max-width: 980px){
-    .portfile__info{
+    .profile__info{
         column-gap:  11px;
     }
 }
 
 @media screen and (max-width: 590px){
-    .portfile__info{
+    .profile__info{
         grid-column: 1/4;
     }
 }
 
 @media screen and (max-width: 320px){
-    .portfile__info{
+    .profile__info{
         justify-self: center;
         column-gap: 10px;
         row-gap: 14px;

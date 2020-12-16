@@ -1,37 +1,37 @@
-let portfileButton = document.querySelector('.portfile__button');
-let portfileSubttitle = document.querySelector('.portfile__subtitle')
-let popup = document.querySelector('.popup_type_user-profile');
-let popupCloseIcon = popup.querySelector('.popup__close-icon_user-profile');
-let inputTop = document.querySelector('.popup__item_user-position_top');
-let inputBottom = document.querySelector('.popup__item_user-position_bottom');
-let portfileTitle = document.querySelector('.portfile__title');
-let popupContainer = popup.querySelector('.popup__container_form_user');
-let popupAddImage = document.querySelector('.popup_type_add-images');
-let portfileButtonBig = document.querySelector('.portfile__button-big')
-// Иконка закрытия для второго попапа
-let popupCloseSecond = document.querySelector('.popup__close-icon_second')
-let popupImage = document.querySelector('.popup_type_big-images')
-let closeImageButton = document.querySelector('.popup__image-close_icon')
-let imageFull = document.querySelector('.popup__image-opened_full')
-let imageText = document.querySelector('.popup__image-text_for_full')
+const profileButton = document.querySelector('.profile__button');
+const profileSubttitle = document.querySelector('.profile__subtitle')
+const popupEditUserProfile = document.querySelector('.popup_type_user-profile');
+const popupCloseIcon = popupEditUserProfile.querySelector('.popup__close-icon_user-profile');
+const inputTop = document.querySelector('.popup__item_user-position_top');
+const inputBottom = document.querySelector('.popup__item_user-position_bottom');
+const profileTitle = document.querySelector('.profile__title');
+const popupContainer = popupEditUserProfile.querySelector('.popup__container_form_user');
+const popupAddImage = document.querySelector('.popup_type_add-images');
+const profileButtonBig = document.querySelector('.profile__button-big')
+ // Иконка закрытия для второго попапа
+const popupCloseSecond = document.querySelector('.popup__close-icon_second')
+const popupToggleBigImage = document.querySelector('.popup_type_big-images')
+const closeImageButton = document.querySelector('.popup__image-close_icon')
+const imageFull = document.querySelector('.popup__image-opened_full')
+const imageText = document.querySelector('.popup__image-text_for_full')
 
 
 // Эта функция открывает основной попап
 function popupAdd(){
-    popup.classList.add('popup_opened');
-    inputTop.value = portfileTitle.textContent;
-    inputBottom.value = portfileSubttitle.textContent;
+    popupEditUserProfile.classList.add('popup_opened');
+    inputTop.value = profileTitle.textContent;
+    inputBottom.value = profileSubttitle.textContent;
 }
 // эта функция закрывает основной попап
 function popupRemove(){
-    popup.classList.remove('popup_opened');
+    popupEditUserProfile.classList.remove('popup_opened');
 }
 
 // эта функция для редактирования тайтла и сабтайтла
 function formSubmitHandler (event) {
     event.preventDefault();
-    portfileTitle.textContent = inputTop.value;
-    portfileSubttitle.textContent = inputBottom.value;
+    profileTitle.textContent = inputTop.value;
+    profileSubttitle.textContent = inputBottom.value;
     popupRemove();
 }
 // эта функция для открытия  второго попапа
@@ -44,11 +44,11 @@ function popupTwoRemove(){
 }
 
 
-portfileButton.addEventListener('click' ,popupAdd);
+profileButton.addEventListener('click' ,popupAdd);
 popupCloseIcon.addEventListener('click',popupRemove);
 popupContainer.addEventListener('submit', formSubmitHandler)
 // вызовы для открытитя второго попапа
-portfileButtonBig.addEventListener('click',popupTwoAdd)
+profileButtonBig.addEventListener('click',popupTwoAdd)
 // вызов закрытия второго попапа через иконку
 popupCloseSecond.addEventListener('click',popupTwoRemove);
 closeImageButton.addEventListener('click', removePopupImage)
@@ -121,8 +121,8 @@ function composeItem(item){
 }
 
 
-inputTop.value = portfileTitle.textContent;
-inputBottom.value = portfileSubttitle.textContent;
+inputTop.value = profileTitle.textContent;
+inputBottom.value = profileSubttitle.textContent;
 
 
 
@@ -149,11 +149,11 @@ function addNewItem(){
 }
 
 function openPopupImage(){
-    popupImage.classList.add('popup_opened')
+    popupToggleBigImage.classList.add('popup_opened')
 }
 
 function removePopupImage(){
-    popupImage.classList.remove('popup_opened')
+    popupToggleBigImage.classList.remove('popup_opened')
 }
 
 renderList()

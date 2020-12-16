@@ -16,36 +16,52 @@ const imageFull = document.querySelector('.popup__image-opened_full')
 const imageText = document.querySelector('.popup__image-text_for_full')
 
 
+// функция открытия общая
+function openPopup(popup){
+    popup.classList.add('popup_opened')
+}
+// функция закрытия общая 
+function closePopup(popup){
+    popup.classList.remove('popup_opened')
+}
+// функция открытия для первого попапа
+function openPopupEditUserProfile(){
+    openPopup(popupEditUserProfile)
+}
+
+function closePopupEditUserProfile(){
+    closePopup(popupEditUserProfile)
+}
+
 // Эта функция открывает основной попап
 function popupAdd(){
-    popupEditUserProfile.classList.add('popup_opened');
+    openPopupEditUserProfile();
     inputTop.value = profileTitle.textContent;
     inputBottom.value = profileSubttitle.textContent;
 }
 // эта функция закрывает основной попап
-function popupRemove(){
-    popupEditUserProfile.classList.remove('popup_opened');
-}
+
+
 
 // эта функция для редактирования тайтла и сабтайтла
 function formSubmitHandler (event) {
     event.preventDefault();
     profileTitle.textContent = inputTop.value;
     profileSubttitle.textContent = inputBottom.value;
-    popupRemove();
+    closePopupEditUserProfile();
 }
 // эта функция для открытия  второго попапа
 function popupTwoAdd(){
-    popupAddImage.classList.add('popup_opened')
+    openPopup(popupAddImage)
 }
 // этп функция для закрытия второго попапа
 function popupTwoRemove(){
-    popupAddImage.classList.remove('popup_opened')
+    closePopup(popupAddImage)
 }
 
 
-profileButton.addEventListener('click' ,popupAdd);
-popupCloseIcon.addEventListener('click',popupRemove);
+profileButton.addEventListener('click' ,openPopupEditUserProfile);
+popupCloseIcon.addEventListener('click',closePopupEditUserProfile);
 popupContainer.addEventListener('submit', formSubmitHandler)
 // вызовы для открытитя второго попапа
 profileButtonBig.addEventListener('click',popupTwoAdd)
@@ -97,6 +113,19 @@ function renderList(){
 
 
 
+function openPopupImage(){
+    openPopup(popupToggleBigImage)
+}
+
+function removePopupImage(){
+    closePopup(popupToggleBigImage)
+}
+
+function removeElement(e){
+    const targertElement = e.target;
+    const targetItem = targertElement.closest('.element');
+    targetItem.remove();
+}
 
 function composeItem(item){
     const newItem = templateLateElement.content.cloneNode(true);
@@ -116,6 +145,7 @@ function composeItem(item){
     imageElement.addEventListener('click', function(event){
         imageFull.src = imageElement.src
         imageText.textContent = headerElement.textContent
+        imageFull.alt = imageText.textContent
     });
     return newItem;
 }
@@ -124,21 +154,6 @@ function composeItem(item){
 inputTop.value = profileTitle.textContent;
 inputBottom.value = profileSubttitle.textContent;
 
-
-
-
-
-function removeElement(e){
-    const targertElement = e.target;
-    const targetItem = targertElement.closest('.element');
-    targetItem.remove();
-}
-
-function bindAddItemListener(){
-    const addButtonElements = document.querySelector('.popup__button-add-image')
-    addButtonElements.addEventListener('click',addNewItem);
-    
-}
 function addNewItem(){
     const popupAddTopText = popupAddTop.value;
     const popupAddBottomImage = popupAddBottom.value;   
@@ -148,13 +163,13 @@ function addNewItem(){
     
 }
 
-function openPopupImage(){
-    popupToggleBigImage.classList.add('popup_opened')
+
+function bindAddItemListener(){
+    const addButtonElements = document.querySelector('.popup__button-add-image')
+    addButtonElements.addEventListener('click',addNewItem);
+    
 }
 
-function removePopupImage(){
-    popupToggleBigImage.classList.remove('popup_opened')
-}
 
 renderList()
 bindAddItemListener();

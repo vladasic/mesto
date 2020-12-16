@@ -8,7 +8,7 @@ const profileTitle = document.querySelector('.profile__title');
 const popupContainer = popupEditUserProfile.querySelector('.popup__container_form_user');
 const popupAddImage = document.querySelector('.popup_type_add-images');
 const profileButtonBig = document.querySelector('.profile__button-big')
- // Иконка закрытия для второго попапа
+// Иконка закрытия для второго попапа
 const popupCloseSecond = document.querySelector('.popup__close-icon_second')
 const popupToggleBigImage = document.querySelector('.popup_type_big-images')
 const closeImageButton = document.querySelector('.popup__image-close_icon')
@@ -17,24 +17,24 @@ const imageText = document.querySelector('.popup__image-text_for_full')
 
 
 // функция открытия общая
-function openPopup(popup){
+function openPopup(popup) {
     popup.classList.add('popup_opened')
 }
 // функция закрытия общая 
-function closePopup(popup){
+function closePopup(popup) {
     popup.classList.remove('popup_opened')
 }
 // функция открытия для первого попапа
-function openPopupEditUserProfile(){
+function openPopupEditUserProfile() {
     openPopup(popupEditUserProfile)
 }
 
-function closePopupEditUserProfile(){
+function closePopupEditUserProfile() {
     closePopup(popupEditUserProfile)
 }
 
 // Эта функция открывает основной попап
-function popupAdd(){
+function popupAdd() {
     openPopupEditUserProfile();
     inputTop.value = profileTitle.textContent;
     inputBottom.value = profileSubttitle.textContent;
@@ -44,29 +44,29 @@ function popupAdd(){
 
 
 // эта функция для редактирования тайтла и сабтайтла
-function formSubmitHandler (event) {
+function formSubmitHandler(event) {
     event.preventDefault();
     profileTitle.textContent = inputTop.value;
     profileSubttitle.textContent = inputBottom.value;
     closePopupEditUserProfile();
 }
 // эта функция для открытия  второго попапа
-function popupTwoAdd(){
+function popupTwoAdd() {
     openPopup(popupAddImage)
 }
 // этп функция для закрытия второго попапа
-function popupTwoRemove(){
+function popupTwoRemove() {
     closePopup(popupAddImage)
 }
 
 
-profileButton.addEventListener('click' ,openPopupEditUserProfile);
-popupCloseIcon.addEventListener('click',closePopupEditUserProfile);
+profileButton.addEventListener('click', openPopupEditUserProfile);
+popupCloseIcon.addEventListener('click', closePopupEditUserProfile);
 popupContainer.addEventListener('submit', formSubmitHandler)
 // вызовы для открытитя второго попапа
-profileButtonBig.addEventListener('click',popupTwoAdd)
+profileButtonBig.addEventListener('click', popupTwoAdd)
 // вызов закрытия второго попапа через иконку
-popupCloseSecond.addEventListener('click',popupTwoRemove);
+popupCloseSecond.addEventListener('click', popupTwoRemove);
 closeImageButton.addEventListener('click', removePopupImage)
 
 
@@ -79,8 +79,8 @@ const templateLateElement = document.querySelector('.template')
 
 // динмаический рендеринг содержимого на старнице
 
-function renderList(){
-    const listItems  = initialCards.map(composeItem);
+function renderList() {
+    const listItems = initialCards.map(composeItem);
 
     listContainerElements.append(...listItems)
 }
@@ -88,21 +88,21 @@ function renderList(){
 
 
 
-function openPopupImage(){
+function openPopupImage() {
     openPopup(popupToggleBigImage)
 }
 
-function removePopupImage(){
+function removePopupImage() {
     closePopup(popupToggleBigImage)
 }
 
-function removeElement(e){
+function removeElement(e) {
     const targertElement = e.target;
     const targetItem = targertElement.closest('.element');
     targetItem.remove();
 }
 
-function composeItem(item){
+function composeItem(item) {
     const newItem = templateLateElement.content.cloneNode(true);
     const headerElement = newItem.querySelector('.element__text');
     const imageElement = newItem.querySelector('.element__img');
@@ -111,13 +111,13 @@ function composeItem(item){
     const removButton = newItem.querySelector('.element__trash');
     headerElement.textContent = item.name;
     imageElement.src = item.link;
-    
-    removButton.addEventListener('click',removeElement);
-    imageElement.addEventListener('click',openPopupImage);
-    elementButton.addEventListener('click', function(){
+
+    removButton.addEventListener('click', removeElement);
+    imageElement.addEventListener('click', openPopupImage);
+    elementButton.addEventListener('click', function () {
         elementButton.classList.toggle('element__button_add_black-icon');
     })
-    imageElement.addEventListener('click', function(event){
+    imageElement.addEventListener('click', function (event) {
         imageFull.src = imageElement.src
         imageText.textContent = headerElement.textContent
         imageFull.alt = imageText.textContent
@@ -129,20 +129,20 @@ function composeItem(item){
 inputTop.value = profileTitle.textContent;
 inputBottom.value = profileSubttitle.textContent;
 
-function addNewItem(){
+function addNewItem() {
     const popupAddTopText = popupAddTop.value;
-    const popupAddBottomImage = popupAddBottom.value;   
-    const newItem = composeItem({name: popupAddTopText , link: popupAddBottomImage});
+    const popupAddBottomImage = popupAddBottom.value;
+    const newItem = composeItem({ name: popupAddTopText, link: popupAddBottomImage });
     listContainerElements.prepend(newItem);
     popupTwoRemove()
-    
+
 }
 
 
-function bindAddItemListener(){
+function bindAddItemListener() {
     const addButtonElements = document.querySelector('.popup__button-add-image')
-    addButtonElements.addEventListener('click',addNewItem);
-    
+    addButtonElements.addEventListener('click', addNewItem);
+
 }
 
 

@@ -34,32 +34,34 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <section class="popup">
-      <form class="popup__container" name="Form" method="post" action="mailto:vlad.rastik@yandex.ru">
-        <button type="button" name="button2" class="popup__close-icon">
-          <img src="./images/close_icon.svg" alt="выход"></button>
+
+
+    <section class="popup popup_type_user-profile">
+      <form class="popup__container popup__container_form_user" name="Form" method="post" action="mailto:vlad.rastik@yandex.ru">
+        <button type="button" name="button2" class="popup__close-icon popup__close-icon_user-profile">
+          <img src="./images/close_icon.svg" class='popup__close-width' alt="выход"></button>
         <div class="popup__main-container">
           <h2 class="popup__heading">Редактировать профиль</h2>
-          <input type="text" name="firstname" value="Жак-Ив Кусто" class="popup__item popup__item_position_top">
+          <input type="text" name="firstname" value="Жак-Ив Кусто" class="popup__item popup__item_user-position_top">
           <input type="text" name="lastname" value="Исследователь океана"
-            class="popup__item popup__item_position_bottom">
+            class="popup__item popup__item_user-position_bottom">
         </div>
         <button type="submit" name="button4" class="popup__button">Сохранить</button>
       </form>
     </section>
 
-    <section class="popup-add">
-      <form class="popup-add__container" name="Form" method="post" action="mailto:vlad.rastik@yandex.ru">
-        <button type="button" name="button5" class="popup-add__close-icon popup-add__close-icon_second">
-          <img src="./images/close_icon.svg" alt="выход"></button>
-        <div class="popup-add__main-container">
-          <h2 class="popup-add__heading">Новое место</h2>
+    <section class="popup popup_type_add-images">
+      <form class="popup__container" name="Form" method="post" action="mailto:vlad.rastik@yandex.ru">
+        <button type="button" name="button5" class="popup__close-icon popup__close-icon_second">
+          <img src="./images/close_icon.svg" class='popup__close-width' alt="выход"></button>
+        <div class="popup__main-container">
+          <h2 class="popup__heading">Новое место</h2>
           <input type="text" name="firstname" placeholder="Название" value=""
-            class="popup-add__item popup-add__item_position_top">
+            class="popup__item popup__item_add-images-position_top">
           <input type="text" name="lastname" placeholder="Ссылка на картинку" value=""
-            class="popup-add__item popup-add__item_position_bottom">
+            class="popup__item popup__item_add-images-position_bottom">
         </div>
-        <button type="button" name="button6" class="popup-add__button popup-add__button-add-image">создать</button>
+        <button type="button" name="button6" class="popup__button popup__button-add-image">создать</button>
       </form>
     </section>
 
@@ -75,18 +77,18 @@
       </li>
     </template>
 
-    <div class="image">
-      <div class="image__container">
-        <button type="button" name="button8" class="image__close">
-          <img src="./images/close_icon.svg" class='image__close-width' alt="выход">
+    <div class="popup popup_type_big-images">
+      <div class="popup__image-container">
+        <button type="button" name="button8" class="popup__image-close popup__image-close_icon">
+          <img src="./images/close_icon.svg" class='popup__close-width' alt="выход">
         </button>
-        <img src='./images/add_Button.svg' alt="изображение" class='image__opened'>
-        <p class="image__text"></p>
+        <img src='./images/add_Button.svg' alt="изображение" class='popup__image-opened popup__image-opened_full '>
+        <p class="popup__image-text popup__image-text_for_full"></p>
       </div>
     </div>
 
   </div>
-  <script src="JavaScript/javaScript.js"></script>
+  <script src="scripts/scripts.js"></script>
 </body>
 
 </html>

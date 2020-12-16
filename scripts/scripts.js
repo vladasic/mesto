@@ -1,19 +1,19 @@
 let portfileButton = document.querySelector('.portfile__button');
 let portfileSubttitle = document.querySelector('.portfile__subtitle')
-let popup = document.querySelector('.popup');
-let popupCloseIcon = popup.querySelector('.popup__close-icon');
-let inputTop = document.querySelector('.popup__item_position_top');
-let inputBottom = document.querySelector('.popup__item_position_bottom');
+let popup = document.querySelector('.popup_type_user-profile');
+let popupCloseIcon = popup.querySelector('.popup__close-icon_user-profile');
+let inputTop = document.querySelector('.popup__item_user-position_top');
+let inputBottom = document.querySelector('.popup__item_user-position_bottom');
 let portfileTitle = document.querySelector('.portfile__title');
-let popupContainer = popup.querySelector('.popup__container');
-let popupAddImage = document.querySelector('.popup-add');
+let popupContainer = popup.querySelector('.popup__container_form_user');
+let popupAddImage = document.querySelector('.popup_type_add-images');
 let portfileButtonBig = document.querySelector('.portfile__button-big')
 // Иконка закрытия для второго попапа
-let popupCloseSecond = document.querySelector('.popup-add__close-icon_second')
-let popupImage = document.querySelector('.image')
-let closeImageButton = document.querySelector('.image__close')
-let imageFull = document.querySelector('.image__opened')
-let imageText = document.querySelector('.image__text')
+let popupCloseSecond = document.querySelector('.popup__close-icon_second')
+let popupImage = document.querySelector('.popup_type_big-images')
+let closeImageButton = document.querySelector('.popup__image-close_icon')
+let imageFull = document.querySelector('.popup__image-opened_full')
+let imageText = document.querySelector('.popup__image-text_for_full')
 
 
 // Эта функция открывает основной попап
@@ -82,8 +82,8 @@ const initialCards = [
 
 // то куда мы добавляем наш HTML
 const listContainerElements = document.querySelector('.elements');
-const popupAddTop = document.querySelector('.popup-add__item_position_top');
-const popupAddBottom = document.querySelector('.popup-add__item_position_bottom')
+const popupAddTop = document.querySelector('.popup__item_add-images-position_top');
+const popupAddBottom = document.querySelector('.popup__item_add-images-position_bottom')
 const templateLateElement = document.querySelector('.template')
 
 // динмаический рендеринг содержимого на старнице
@@ -135,7 +135,7 @@ function removeElement(e){
 }
 
 function bindAddItemListener(){
-    const addButtonElements = document.querySelector('.popup-add__button-add-image')
+    const addButtonElements = document.querySelector('.popup__button-add-image')
     addButtonElements.addEventListener('click',addNewItem);
     
 }

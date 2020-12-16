@@ -1,0 +1,28 @@
+.popup__image-close{
+    width: 40px;
+    align-self: flex-end;
+    padding-left: 5%;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+}
+
+.popup__image-close:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+.popup__image-close:active, .popup__image-close:focus { outline: none; }
+
+
+@media screen and (max-width: 920px){
+    .popup__image-close{
+        max-width: 433px;
+        padding-left: 10%;
+    }
+}
+
+@media screen and (max-width: 540px){    
+
+    .popup__image-close{
+        padding-left: 15%;
+    }
+}

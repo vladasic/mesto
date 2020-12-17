@@ -1,20 +1,20 @@
-const profileButton = document.querySelector('.profile__button');
+const openEditProfileButton = document.querySelector('.profile__button');
 const profileSubttitle = document.querySelector('.profile__subtitle')
 const popupEditUserProfile = document.querySelector('.popup_type_user-profile');
-const popupCloseIcon = popupEditUserProfile.querySelector('.popup__close-icon_user-profile');
-const inputTop = document.querySelector('.popup__item_user-position_top');
-const inputBottom = document.querySelector('.popup__item_user-position_bottom');
+const closeEditUserProfileButton = popupEditUserProfile.querySelector('.popup__close-icon_user-profile');
+const inputName = document.querySelector('.popup__item_user-position_top');
+const inputProfession = document.querySelector('.popup__item_user-position_bottom');
 const profileTitle = document.querySelector('.profile__title');
 const popupContainer = popupEditUserProfile.querySelector('.popup__container_form_user');
 const popupAddImage = document.querySelector('.popup_type_add-images');
-const profileButtonBig = document.querySelector('.profile__button-big')
+const openAddCardPopupButton = document.querySelector('.profile__button-big')
 // Иконка закрытия для второго попапа
-const popupCloseSecond = document.querySelector('.popup__close-icon_second')
+const closeAddCardPopupButton = document.querySelector('.popup__close-icon_second')
 const popupToggleBigImage = document.querySelector('.popup_type_big-images')
 const closeImageButton = document.querySelector('.popup__image-close_icon')
 const imageFull = document.querySelector('.popup__image-opened_full')
 const imageText = document.querySelector('.popup__image-text_for_full')
-
+const formTypeAddImage = document.forms.formImg
 
 // функция открытия общая
 function openPopup(popup) {
@@ -27,63 +27,54 @@ function closePopup(popup) {
 // функция открытия для первого попапа
 function openPopupEditUserProfile() {
     openPopup(popupEditUserProfile)
+    inputName.value = profileTitle.textContent;
+    inputProfession.value = profileSubttitle.textContent;
 }
 
 function closePopupEditUserProfile() {
     closePopup(popupEditUserProfile)
+
 }
-
-// Эта функция открывает основной попап
-function popupAdd() {
-    openPopupEditUserProfile();
-    inputTop.value = profileTitle.textContent;
-    inputBottom.value = profileSubttitle.textContent;
-}
-// эта функция закрывает основной попап
-
-
 
 // эта функция для редактирования тайтла и сабтайтла
-function formSubmitHandler(event) {
+function editProfileFormSubmitHandler(event) {
     event.preventDefault();
-    profileTitle.textContent = inputTop.value;
-    profileSubttitle.textContent = inputBottom.value;
+    profileTitle.textContent = inputName.value;
+    profileSubttitle.textContent = inputProfession.value;
     closePopupEditUserProfile();
+
+
 }
 // эта функция для открытия  второго попапа
-function popupTwoAdd() {
+function openAddCardPopup() {
     openPopup(popupAddImage)
 }
 // этп функция для закрытия второго попапа
-function popupTwoRemove() {
+function closeAddCardPopup() {
     closePopup(popupAddImage)
+    formTypeAddImage.reset()
 }
 
 
-profileButton.addEventListener('click', openPopupEditUserProfile);
-popupCloseIcon.addEventListener('click', closePopupEditUserProfile);
-popupContainer.addEventListener('submit', formSubmitHandler)
+openEditProfileButton.addEventListener('click', openPopupEditUserProfile);
+closeEditUserProfileButton.addEventListener('click', closePopupEditUserProfile);
+popupContainer.addEventListener('submit', editProfileFormSubmitHandler)
 // вызовы для открытитя второго попапа
-profileButtonBig.addEventListener('click', popupTwoAdd)
+openAddCardPopupButton.addEventListener('click', openAddCardPopup)
 // вызов закрытия второго попапа через иконку
-popupCloseSecond.addEventListener('click', popupTwoRemove);
+closeAddCardPopupButton.addEventListener('click', closeAddCardPopup);
 closeImageButton.addEventListener('click', removePopupImage)
 
 
 
 // то куда мы добавляем наш HTML
 const listContainerElements = document.querySelector('.elements');
-const popupAddTop = document.querySelector('.popup__item_add-images-position_top');
-const popupAddBottom = document.querySelector('.popup__item_add-images-position_bottom')
-const templateLateElement = document.querySelector('.template')
+const inputTitle = document.querySelector('.popup__item_add-images-position_top');
+const inputLink = document.querySelector('.popup__item_add-images-position_bottom')
+const templateElement = document.querySelector('.template')
 
-// динмаический рендеринг содержимого на старнице
 
-function renderList() {
-    const listItems = initialCards.map(composeItem);
 
-    listContainerElements.append(...listItems)
-}
 // Это оптимизация кода, изначально это было вместе с newHTML
 
 
@@ -103,7 +94,7 @@ function removeElement(e) {
 }
 
 function composeItem(item) {
-    const newItem = templateLateElement.content.cloneNode(true);
+    const newItem = templateElement.content.cloneNode(true);
     const headerElement = newItem.querySelector('.element__text');
     const imageElement = newItem.querySelector('.element__img');
     const elementButton = newItem.querySelector('.element__button')
@@ -111,7 +102,7 @@ function composeItem(item) {
     const removButton = newItem.querySelector('.element__trash');
     headerElement.textContent = item.name;
     imageElement.src = item.link;
-
+    imageElement.alt = item.name;;
     removButton.addEventListener('click', removeElement);
     imageElement.addEventListener('click', openPopupImage);
     elementButton.addEventListener('click', function () {
@@ -125,29 +116,33 @@ function composeItem(item) {
     return newItem;
 }
 
+// динмаический рендеринг содержимого на старнице
 
-inputTop.value = profileTitle.textContent;
-inputBottom.value = profileSubttitle.textContent;
+function renderList() {
+    const listItems = initialCards.map(composeItem);
+
+    listContainerElements.append(...listItems)
+}
+
+
+
 
 function addNewItem() {
-    const popupAddTopText = popupAddTop.value;
-    const popupAddBottomImage = popupAddBottom.value;
+    const popupAddTopText = inputTitle.value;
+    const popupAddBottomImage = inputLink.value;
     const newItem = composeItem({ name: popupAddTopText, link: popupAddBottomImage });
     listContainerElements.prepend(newItem);
-    popupTwoRemove()
+    closeAddCardPopup()
 
 }
+const addCardButton = document.querySelector('.popup__button-add-image')
+addCardButton.addEventListener('click', addNewItem);
 
 
-function bindAddItemListener() {
-    const addButtonElements = document.querySelector('.popup__button-add-image')
-    addButtonElements.addEventListener('click', addNewItem);
-
-}
 
 
 renderList()
-bindAddItemListener();
+
 
 
 

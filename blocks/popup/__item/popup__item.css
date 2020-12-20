@@ -14,3 +14,15 @@
     margin-top: 30px;
 
 }
+
+/* .popup__item:invalid:not(:focus):not(:placeholder-shown) {
+    border-bottom-color: #FF0000
+} */
+
+/* .popup__item:invalid{
+    border-bottom-color: #FF0000
+}
+
+.popup__item:valid{
+    border-bottom-color:  rgba(0, 0, 0, 0.2);
+} */

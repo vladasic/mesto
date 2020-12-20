@@ -28,10 +28,14 @@
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__item/popup__item.css);
+@import url(../blocks/popup/__item/_type_error/popup__item_type_error.css);
 @import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__button/_invalid/popup__button_invalid.css);
 @import url(../blocks/popup/__image-container/popup__image-container.css);
 @import url(../blocks/popup/__image-close/popup__image-close.css);
 @import url(../blocks/popup/__close-width/popup__close-width.css);
 @import url(../blocks/popup/__image-opened/popup__image-opened.css);
 @import url(../blocks/popup/__image-text/popup__image-text.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/error/error.css);
+@import url(../scripts/valdationConfig.js);

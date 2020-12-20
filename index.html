@@ -37,34 +37,49 @@
 
 
     <section class="popup popup_type_user-profile">
-      <form class="popup__container popup__container_form_user" name="Form" method="post"
-        action="mailto:vlad.rastik@yandex.ru">
+      <form class="popup__container popup__container_form_user popup__form-add" name="Form" method="post"
+        action="mailto:vlad.rastik@yandex.ru" novalidate >
         <button type="button" name="button-user-popup-close-icon"
           class="popup__close-icon popup__close-icon_user-profile">
           <img src="./images/close_icon.svg" alt="выход"></button>
         <div class="popup__main-container">
           <h2 class="popup__heading">Редактировать профиль</h2>
-          <input type="text" name="firstname" value="Жак-Ив Кусто" class="popup__item popup__item_user-position_top">
-          <input type="text" name="lastname" value="Исследователь океана"
-            class="popup__item popup__item_user-position_bottom">
+
+          <input type="text" id="firstname-card"  minlength="2" maxlength="40" required name="firstname" value="Жак-Ив Кусто" 
+          class="popup__item popup__input popup__item_user-position_top popup__input_type_name">
+          <span id="firstname-card-error" class="popup__item-error error"></span>
+
+          
+          <input type="text" id="lastname-card" minlength="2" maxlength="200" required name="lastname" value="Исследователь океана"
+          class="popup__item popup__input popup__item_user-position_bottom" >
+          <span id="lastname-card-error" class="popup__item-error error"></span>
+
+
         </div>
-        <button type="submit" name="button-user-popup-save" class="popup__button">Сохранить</button>
+        <button type="submit" name="button-user-popup-save" class="popup__button popup__buttion-input">Сохранить</button>
       </form>
     </section>
 
-    <section class="popup popup_type_add-images">
-      <form class="popup__container" name="formImg" method="post" action="mailto:vlad.rastik@yandex.ru">
+    <section class="popup popup__add popup_type_add-images">
+      <form class="popup__container popup__form-add" name="formImg" method="post" action="mailto:vlad.rastik@yandex.ru" novalidate>
         <button type="button" name="button-image-close-icon" class="popup__close-icon popup__close-icon_second">
           <img src="./images/close_icon.svg" alt="выход"></button>
         <div class="popup__main-container">
           <h2 class="popup__heading">Новое место</h2>
-          <input type="text" name="firstname" placeholder="Название" value=""
-            class="popup__item popup__item_add-images-position_top">
-          <input type="text" name="lastname" placeholder="Ссылка на картинку" value=""
-            class="popup__item popup__item_add-images-position_bottom">
+          
+          <input type="text" id="place-name"  minlength="2" maxlength="40" required name="firstname" placeholder="Название" value=""
+            class="popup__item popup__input popup__item_add-images-position_top">
+            <span id="place-name-error" class="popup__item-error error"></span>
+
+
+          <input type="url" id="place-add-image" minlength="2" maxlength="200" required name="lastname" placeholder="Ссылка на картинку" value=""
+            class="popup__item popup__input popup__item_add-images-position_bottom">
+            <span id="place-add-image-error" class="popup__item-error error"></span>
+
+
         </div>
         <button type="button" name="button-image-popup-add"
-          class="popup__button popup__button-add-image">создать</button>
+          class="popup__button popup__button-add-image popup__buttion-input">создать</button>
       </form>
     </section>
 
@@ -80,7 +95,7 @@
       </li>
     </template>
 
-    <div class="popup popup_type_big-images">
+    <div class="popup popup__big_img popup_type_big-images">
       <div class="popup__image-container">
         <button type="button" name="button-big-image-popup-close" class="popup__image-close popup__image-close_icon">
           <img src="./images/close_icon.svg" class='popup__close-width' alt="выход">

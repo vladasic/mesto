@@ -235,7 +235,7 @@ document.addEventListener('mousedown', function (evt) {
 })
 
 document.addEventListener('mousedown', function (evt) {
-    const popup = document.querySelector('.popup__add')
+    const popup = document.querySelector('.popup_add')
     if (evt.target === popup) {
 
         closeAddCardPopup();
@@ -243,7 +243,7 @@ document.addEventListener('mousedown', function (evt) {
 })
 
 document.addEventListener('mousedown', function (evt) {
-    const popup = document.querySelector('.popup__big_img')
+    const popup = document.querySelector('.popup_big_img')
     if (evt.target === popup) {
 
         removePopupImage();

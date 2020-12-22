@@ -17,22 +17,25 @@ const imageText = document.querySelector('.popup__image-text_for_full')
 const formTypeAddImage = document.forms.formImg;
 const popup = document.querySelector('.popup')
 
-// функция открытия общая
-function openPopup(popup) {
-    popup.classList.add('popup_opened')
-    document.addEventListener('keydown', function (evt) {
+
+function handleEsc(evt){
         if (evt.keyCode === 27) {
             closeAddCardPopup();
             closePopupEditUserProfile();
             removePopupImage()
         }
-    });
+}
+// функция открытия общая
+function openPopup(popup) {
+    popup.classList.add('popup_opened')
+    document.addEventListener('keydown', handleEsc) 
+
 }
 // функция закрытия общая 
 function closePopup(popup) {
     popup.classList.remove('popup_opened')
+    document.addEventListener('keydown', handleEsc.disabled)
 }
-
 
 // функция открытия для первого попапа
 function openPopupEditUserProfile() {
@@ -156,3 +159,26 @@ function addNewItem() {
     
     
 renderList()
+
+document.addEventListener('mousedown', function (evt) {
+    if (evt.target === popup) {
+
+        closePopupEditUserProfile()
+    }
+})
+
+document.addEventListener('mousedown', function (evt) {
+    const popup = document.querySelector('.popup_add')
+    if (evt.target === popup) {
+
+        closeAddCardPopup();
+    }
+})
+
+document.addEventListener('mousedown', function (evt) {
+    const popup = document.querySelector('.popup_big_img')
+    if (evt.target === popup) {
+
+        removePopupImage();
+    }
+})

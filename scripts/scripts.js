@@ -23,7 +23,9 @@ function handleEsc(evt){
             closeAddCardPopup();
             closePopupEditUserProfile();
             removePopupImage()
+            console.log('я работаю')
         }
+        
 }
 // функция открытия общая
 function openPopup(popup) {
@@ -34,7 +36,7 @@ function openPopup(popup) {
 // функция закрытия общая 
 function closePopup(popup) {
     popup.classList.remove('popup_opened')
-    document.addEventListener('keydown', handleEsc.disabled)
+    document.removeEventListener('keydown', handleEsc)
 }
 
 // функция открытия для первого попапа

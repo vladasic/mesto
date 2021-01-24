@@ -1,4 +1,4 @@
-const valdationConfig = {
+export const valdationConfig = {
     formSelector: '.popup__container',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',

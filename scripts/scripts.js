@@ -1,6 +1,6 @@
 import { initialCards } from './initial-сards.js';
 import { Card } from './classes/Card.js';
-import { valdationConfig} from './valdationConfig.js'
+import { valdationConfig } from './valdationConfig.js'
 import { FormValidator } from './classes/FormValidator.js';
 
 
@@ -20,7 +20,8 @@ const popupToggleBigImage = document.querySelector('.popup_type_big-images')
 const closeImageButton = document.querySelector('.popup__image-close_icon')
 const formTypeAddImage = document.forms.formImg;
 const popup = document.querySelector('.popup')
-
+const popups = document.querySelector('.popup_add');
+const popupBigImg = document.querySelector('.popup_big_img')
 
 function handleEsc(evt) {
     if (evt.keyCode === 27) {
@@ -32,7 +33,7 @@ function handleEsc(evt) {
 
 }
 // функция открытия общая
-function openPopup(popup) {
+export default function openPopup(popup) {
     popup.classList.add('popup_opened')
     document.addEventListener('keydown', handleEsc)
 
@@ -57,7 +58,7 @@ function closePopupEditUserProfile() {
 }
 
 // эта функция для редактирования тайтла и сабтайтла
-function editProfileFormSubmitHandler(event) {
+function handleEditProfileFormSubmi(event) {
     event.preventDefault();
     profileTitle.textContent = inputName.value;
     profileSubttitle.textContent = inputProfession.value;
@@ -78,7 +79,7 @@ function closeAddCardPopup() {
 
 openEditProfileButton.addEventListener('click', openPopupEditUserProfile);
 closeEditUserProfileButton.addEventListener('click', closePopupEditUserProfile);
-popupContainer.addEventListener('submit', editProfileFormSubmitHandler)
+popupContainer.addEventListener('submit', handleEditProfileFormSubmi)
 // вызовы для открытитя второго попапа
 openAddCardPopupButton.addEventListener('click', openAddCardPopup)
 // вызов закрытия второго попапа через иконку
@@ -95,14 +96,7 @@ const templateElement = document.querySelector('.template')
 
 
 
-// Это оптимизация кода, изначально это было вместе с newHTML
 
-
-
-function openPopupImage() {
-    openPopup(popupToggleBigImage)
-
-}
 
 function removePopupImage() {
     closePopup(popupToggleBigImage)
@@ -129,9 +123,9 @@ const addCardButton = document.querySelector('.popup__button-add-image')
 
 
 
-function addNewItem() {
+function addNewItem(event) {
     const card = new Card(inputTitle.value, inputLink.value, templateElement);
-
+    event.preventDefault;
     const cardElement = card._createCard();
     listContainerElements.append(cardElement);
     // и закрыть попап, если карточка создавалась с него
@@ -146,31 +140,43 @@ addCardButton.addEventListener('click', addNewItem);
 renderCardsWithClasses()
 // renderList()
 
-document.addEventListener('mousedown', function (evt) {
-    if (evt.target === popup) {
+// document.addEventListener('mousedown', function (evt) {
+//     if (evt.target === popup) {
 
-        closePopupEditUserProfile()
-    }
-})
+//         closePopupEditUserProfile()
+//     }
+// })
 
-document.addEventListener('mousedown', function (evt) {
-    const popup = document.querySelector('.popup_add')
-    if (evt.target === popup) {
+// // document.addEventListener('mousedown', function (evt) {
+// //     const popup = document.querySelector('.popup_add')
+// //     if (evt.target === popup) {
 
-        closeAddCardPopup();
-    }
-})
+// //         closeAddCardPopup();
+// //     }
+// // })
 
-document.addEventListener('mousedown', function (evt) {
-    const popup = document.querySelector('.popup_big_img')
-    if (evt.target === popup) {
+// // document.addEventListener('mousedown', function (evt) {
+// //     const popup = document.querySelector('.popup_big_img')
+// //     if (evt.target === popup) {
 
-        removePopupImage();
-    }
-})
+// //         removePopupImage();
+// //     }
+// // })
 
 
 
+
+function closeForClickInOverlay(popup) {
+    document.addEventListener('mousedown', function (evt) {
+        if (evt.target === popup) {
+            closePopupEditUserProfile();
+            closeAddCardPopup();
+            removePopupImage();
+        }
+    })
+}closeForClickInOverlay(popup)
+closeForClickInOverlay(popups)
+closeForClickInOverlay(popupBigImg)
 
 const profileFormValidity = new FormValidator();
 profileFormValidity.enableValidation(valdationConfig)

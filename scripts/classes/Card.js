@@ -1,8 +1,10 @@
+import openPopup from"../scripts.js "
 export class Card {
     constructor(name, link, elementTemplate) {
         this._link = link;
         this._name = name;
         this._elementTemplate = elementTemplate;
+       
     }
 
     _getClonedTemplate() {
@@ -11,7 +13,7 @@ export class Card {
 
     _setEventListener() {
         this._elementImage.addEventListener('click', () => {
-            this._toggleBigPopup();
+            this._popupInfo();
 
         });
 
@@ -31,23 +33,31 @@ export class Card {
 
 
 
-    _toggleBigPopup() {
-        this._popupBig = document.querySelector('.popup_big_img')
-        this._imageText = document.querySelector('.popup__image-text_for_full')
-        this._imageFull = document.querySelector('.popup__image-opened')
+    _popupInfo() {
+        this._popupSelector();
 
         this._imageFull.src = this._elementImage.src;
         this._imageText.textContent = this._elementText.textContent;
         this._imageFull.alt = this._imageText.textContent;
+        this._closePopupBig();
+       
+    }
 
-        this._popupBig.classList.toggle('popup_opened')
+    _popupSelector(){
+        this._imageText = document.querySelector('.popup__image-text_for_full')
+        this._imageFull = document.querySelector('.popup__image-opened')
     }
 
     _removeElement() {
-        this._allElement = document.querySelector('.element');
-        this._allElement.remove();
+        this._element = document.querySelector('.element');
+        console.log()
+        this._element.remove();
+    }
 
-
+    _closePopupBig(){
+        this._popupBig = document.querySelector('.popup_big_img') 
+        this._openPopup = openPopup(this._popupBig)
+      
     }
 
     _createCard() {

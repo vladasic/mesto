@@ -33,7 +33,7 @@ function handleEsc(evt) {
 
 }
 // функция открытия общая
-export default function openPopup(popup) {
+ function openPopup(popup) {
     popup.classList.add('popup_opened')
     document.addEventListener('keydown', handleEsc)
 
@@ -109,7 +109,7 @@ function renderCardsWithClasses() {
     const cardClasses = initialCards.map(({ name, link }) =>
         (new Card(name, link, templateElement))
     );
-    const cardElements = cardClasses.map(card => (card._createCard()))
+    const cardElements = cardClasses.map(card => (card.createCard()))
     //запись сверху эквивалентна записи снизу
     //    const cardElements = cardClasses.map(card => {
     //        return card.createCard() 
@@ -126,8 +126,8 @@ const addCardButton = document.querySelector('.popup__button-add-image')
 function addNewItem(event) {
     const card = new Card(inputTitle.value, inputLink.value, templateElement);
     event.preventDefault;
-    const cardElement = card._createCard();
-    listContainerElements.append(cardElement);
+    const cardElement = card.createCard();
+    listContainerElements.prepend(cardElement);
     // и закрыть попап, если карточка создавалась с него
     closeAddCardPopup()
     addCardButton.classList.add('popup__button_invalid');
@@ -138,30 +138,6 @@ function addNewItem(event) {
 addCardButton.addEventListener('click', addNewItem);
 
 renderCardsWithClasses()
-// renderList()
-
-// document.addEventListener('mousedown', function (evt) {
-//     if (evt.target === popup) {
-
-//         closePopupEditUserProfile()
-//     }
-// })
-
-// // document.addEventListener('mousedown', function (evt) {
-// //     const popup = document.querySelector('.popup_add')
-// //     if (evt.target === popup) {
-
-// //         closeAddCardPopup();
-// //     }
-// // })
-
-// // document.addEventListener('mousedown', function (evt) {
-// //     const popup = document.querySelector('.popup_big_img')
-// //     if (evt.target === popup) {
-
-// //         removePopupImage();
-// //     }
-// // })
 
 
 
@@ -180,3 +156,20 @@ closeForClickInOverlay(popupBigImg)
 
 const profileFormValidity = new FormValidator();
 profileFormValidity.enableValidation(valdationConfig)
+
+
+
+
+export  function popupInfo(link, name, popup) {
+    const imageText = document.querySelector('.popup__image-text_for_full')
+    const imageFull = document.querySelector('.popup__image-opened')
+
+    imageFull.src =link;
+    imageText.textContent = name;
+    imageFull.alt = name;
+
+    const  popupBig = document.querySelector('.popup_big_img') 
+    popup = openPopup(popupBig)
+   
+}
+

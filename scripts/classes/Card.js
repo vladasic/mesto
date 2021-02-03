@@ -1,4 +1,4 @@
-import {popupInfo
+import {openWithPopup
     } from "../scripts.js ";
 
 
@@ -17,7 +17,7 @@ export class Card {
 
     _setEventListener() {
         this._elementImage.addEventListener('click', () => {
-            this.popupInfo = popupInfo(this._elementImage.src ,this._elementText.textContent, this.openPopup)
+            // this.popupInfo = popupInfo(this._elementImage.src ,this._elementText.textContent, this.openPopup)
 
         });
 

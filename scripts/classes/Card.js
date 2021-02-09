@@ -1,15 +1,14 @@
-import {popupInfo
-    } from "../scripts.js ";
-
-
+import{handleCardClick} from '../scripts.js'
 
 export class Card {
-    constructor(name, link, elementTemplate) {
+    constructor(name, link, elementTemplate,) {
         this._link = link;
         this._name = name;
         this._elementTemplate = elementTemplate;
+
        
     }
+
 
     _getClonedTemplate() {
         return this._elementTemplate.content.querySelector('.element').cloneNode(true);
@@ -17,8 +16,7 @@ export class Card {
 
     _setEventListener() {
         this._elementImage.addEventListener('click', () => {
-            this.popupInfo = popupInfo(this._elementImage.src ,this._elementText.textContent, this.openPopup)
-
+            this._handleCardClick = handleCardClick(this._elementImage.src ,this._elementText.textContent, this.openPopup)
         });
 
         this._elementButton.addEventListener('click', () => {

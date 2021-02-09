@@ -3,6 +3,7 @@ import {Popup} from './Popup.js';
 // import {Card} from '../Card.js';
 
 export class PopupWithImage extends Popup{
+<<<<<<< HEAD
     constructor(popupSelector){
         super(popupSelector);
         this._popupSelector = popupSelector
@@ -18,6 +19,23 @@ export class PopupWithImage extends Popup{
 
 
     }
+=======
+    constructor({addNewItem},popupSelector){
+        super(popupSelector);
+        this._addNewItem = addNewItem;
+        this._popupSelector = popupSelector
+    }
+    open(){
+        this.popupSelector.classList.add('popup_opened');
+        this.addNewItems()
+    }
+    addNewItems(){
+       return  this._addNewItem()
+    }
+
+
+
+>>>>>>> b0a972e66248983a3ff2b58527de8614a1f8bc01
 }
 
 

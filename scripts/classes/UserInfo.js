@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export class UserInfo{
     constructor({name, info},profileTitle,profileSubttitle){
       this._name = name;
@@ -17,3 +18,15 @@ export class UserInfo{
     }
   }
   
+=======
+export class UerInfo{
+  constructor({name, info}){
+    this._name = name;
+    this._info = info;
+  }
+
+  getUserInfo(){
+
+  }
+}
+>>>>>>> b0a972e66248983a3ff2b58527de8614a1f8bc01

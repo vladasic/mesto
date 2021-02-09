@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 import{handleCardClick} from '../scripts.js'
-=======
-import {openWithPopup
-    } from "../scripts.js ";
-
-
->>>>>>> b0a972e66248983a3ff2b58527de8614a1f8bc01
 
 export class Card {
     constructor(name, link, elementTemplate,) {
@@ -23,12 +16,7 @@ export class Card {
 
     _setEventListener() {
         this._elementImage.addEventListener('click', () => {
-<<<<<<< HEAD
             this._handleCardClick = handleCardClick(this._elementImage.src ,this._elementText.textContent, this.openPopup)
-=======
-            // this.popupInfo = popupInfo(this._elementImage.src ,this._elementText.textContent, this.openPopup)
-
->>>>>>> b0a972e66248983a3ff2b58527de8614a1f8bc01
         });
 
         this._elementButton.addEventListener('click', () => {

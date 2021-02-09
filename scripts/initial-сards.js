@@ -1,3 +1,5 @@
+// import arhiz = from '.'
+
 export const initialCards = [
     {
         name: 'Архыз',

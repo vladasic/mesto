@@ -1,4 +1,4 @@
-import{handleCardClick} from '../scripts.js'
+import{handleCardClick} from '../../src/index.js'
 
 export class Card {
     constructor(name, link, elementTemplate,) {

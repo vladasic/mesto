@@ -15,7 +15,7 @@ export class Popup{
 
 
     setEventListeners(){
-        this._closeIcon = document.querySelector('.popup__close-icon_general');
+        this._closeIcon = document.querySelector('.popup__close-icon-general');
         this._closeIcon.addEventListener('click', ()=>{
             this.close()
         });

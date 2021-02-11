@@ -5,7 +5,7 @@ export class Card {
         this._link = link;
         this._name = name;
         this._elementTemplate = elementTemplate;
-
+        this._handleCardClick = handleCardClick;
        
     }
 
@@ -16,7 +16,7 @@ export class Card {
 
     _setEventListener() {
         this._elementImage.addEventListener('click', () => {
-            this._handleCardClick = handleCardClick(this._elementImage.src ,this._elementText.textContent, this.openPopup)
+             handleCardClick(this._elementImage.src ,this._elementText.textContent, this.openPopup)
         });
 
         this._elementButton.addEventListener('click', () => {
@@ -32,7 +32,7 @@ export class Card {
     _addElementBlackIcons() {
         this._elementButton.classList.toggle('element__button_add_black-icon');
     }
-
+    //не совсем понял что значит занулить??
     _removeElement() {
         this._element.remove();
     }

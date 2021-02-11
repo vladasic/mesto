@@ -1,31 +1,38 @@
-import {Popup} from'./Popup.js'
+import { Popup } from './Popup.js'
+import { popupContainer } from '../utils/contstants.js'
 
 
-
-export class PopupWithForm extends Popup{
-    constructor({getInputsValues},popupSelector){
+export class PopupWithForm extends Popup {
+    constructor({ getInputsValues, handleFormSubmit }, popupSelector, form) {
         super(popupSelector);
         this._getInputsValues = getInputsValues;
-        this._popupSelector = popupSelector
-        
+        this._popupSelector = popupSelector;
+        this._handleFormSubmit = handleFormSubmit;
+        this._form = form;
     }
-    open(){
-        super.open()
-        
+
+
+    _handleFormSubmits() {
+        return this._handleFormSubmit()
     }
-    _getInput(){
-        return  this._getInputsValues()
-     }
+    _getInput() {
+        return this._getInputsValues()
+    }
 
- 
+    setEventListeners() {
+        this._form.addEventListener('submit', () => {
+            console.log('this')
+              this._handleFormSubmits(this._getInput());
+        });
 
+        super.setEventListeners();
+    }
 
-     close(form){
-         super.close();
-         form = this.form;
-         this.form.reset()
-         
-     }
+    close() {
+        super.close();
+        this._form.reset()
+
+    }
 }
 
 
@@ -122,7 +129,7 @@ export class PopupWithForm extends Popup{
 //     }
 
 //     getSubmitForm(){
-        
+
 //         return this._submit
 //         //вернуть значение которое мы подставляем в script.js , сейчас тут равно = 
 //         //addCardButton.addEventListener('submit', popupWithFormTwo.setEventListener(), console.log(popupWithFormTwo.setEventListener()))}
@@ -145,7 +152,7 @@ export class PopupWithForm extends Popup{
 //         //по идеи значения гед должны становиться дизейблед.
 
 //     }
-    
+
 // }
 
 
@@ -172,18 +179,18 @@ export class PopupWithForm extends Popup{
 //       this._profileTitle =profileTitle;
 //       this._profileSubttitle = profileSubttitle
 //     }
-  
+
 //     getUserInfo(){
 //       return this._name.value = this._profileTitle.textContent,
 //       this._info.value = this._profileSubttitle.textContent;
 //     }
-  
+
 //     setUserInfo(){
 //       this._profileTitle.textContent = this._name.value;
 //       this._profileSubttitle.textContent = this._info.value;
 //     }
 //   }
-  
+
 //   function handleEditProfileFormSubmi(event) {
 //       event.preventDefault();
 //       profileTitle.textContent = inputName.value;
@@ -235,7 +242,7 @@ export class PopupWithForm extends Popup{
 //         // метод setEventListeners класса PopupWithForm  должен не только добавлять обработчик клика иконке закрытия, 
 //         //но и добавлять обработчик саюмита формы.
 //     }
-    
+
 //     close(){
 //         super.close();
 //         this._getInputValues.reset()

@@ -1,23 +1,22 @@
-import {Popup} from './Popup.js';
+import { Popup } from './Popup.js';
+import { popupImageBig, popupTextInfo } from '../utils/contstants.js'
 
 // import {Card} from '../Card.js';
 
-export class PopupWithImage extends Popup{
-    constructor(popupSelector){
+export class PopupWithImage extends Popup {
+    constructor(popupSelector) {
         super(popupSelector);
         this._popupSelector = popupSelector
     }
 
-    openPopupImg(name,link){
-    const popupImageBig = document.querySelector('.popup__image-opened_full');
-    const popupTextInfo = document.querySelector('.popup__image-text_for_full');
-    
-    popupTextInfo.textContent = name;
-    popupImageBig.src = link;
-    popupImageBig.alt = name.textContent;
-
-
+    openPopupImg(name, link) {
+        popupTextInfo.textContent = name;
+        popupImageBig.src = link;
+        popupImageBig.alt = name.textContent;
     }
+
+
+
 }
 
 

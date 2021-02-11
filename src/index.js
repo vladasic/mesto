@@ -23,18 +23,13 @@ import {
     popupToggleBigImage,
     closeImageButton,
     formTypeAddImage,
-    formEditProfile,
-    popup,
-    popups,
-    popupBigImg,
     listContainerElements,
     inputTitle,
     inputLink,
     templateElement,
-    addCardButton,
     popupBig,
-    submitFormBigImage,
-    popupCloseGeneral
+    popupCloseGeneral,
+    popupformAdd
 }
     from '../scripts/utils/contstants.js';
 
@@ -43,7 +38,7 @@ import {
 const section = new Section({
     items: initialCards,
     renderer: () => {
-        const openBigImage = new PopupWithImage(popupBig)
+
         const cardClasses = initialCards.map(({ name, link }) =>
         (new Card(name, link, templateElement,
             openBigImage.openPopupImg(name, link)
@@ -56,72 +51,87 @@ const section = new Section({
 },
     listContainerElements
 );
-
+const openBigImage = new PopupWithImage(popupBig)
 section.renderItems() //активация функции рендера на странице
 
+
+
+
+//первая форма готово
 
 const editPofileSubmit = new PopupWithForm({
     getInputsValues: () => {
         profileTitle.textContent = inputName.value;
         profileSubttitle.textContent = inputProfession.value;
         // editPofileSubmit.close();
+    },
+    handleFormSubmit: () => {
+        editPofileSubmit._getInput();
+        editPofileSubmit.close(popupEditUserProfile)
     }
-}, popupEditUserProfile)
+},
+    popupEditUserProfile, popupContainer)
 
+editPofileSubmit.setEventListeners()
 
 
 
 //функция выrлючения первой формы
-const submitFormEdit = () => {
-    editPofileSubmit._getInput()
-    editPofileSubmit.close(popupEditUserProfile)
+// const submitFormEdit = () => {
+//     editPofileSubmit._getInput()
+//     editPofileSubmit.close(popupEditUserProfile)
 
-}
+// }
 
-popupContainer.addEventListener('submit', submitFormEdit)
+// popupContainer.addEventListener('submit', submitFormEdit)
 
 
 //под нами вторая вариация нажатия сабмита формы второй формы 
-const popupWithFormTwo = new PopupWithForm(
+
+
+function addNewCard(){
+    const card = new Card(inputTitle.value, inputLink.value, templateElement);
+    const cardElement = card.createCard();
+    
+    listContainerElements.prepend(cardElement);
+}
+
+const popupAddCardForm = new PopupWithForm(
     {
         getInputsValues: () => {
-            const card = new Card(inputTitle.value, inputLink.value, templateElement);
-
-            const cardElement = card.createCard();
-            listContainerElements.prepend(cardElement);
-            // и закрыть попап, если карточка создавалась с него
-            popupWithFormTwo.close(formTypeAddImage)
-            addCardButton.classList.add('popup__button_invalid');
-            addCardButton.disabled = true
-
+            addNewCard()       
+            // addNewCard()
+            // addCardButton.classList.add('popup__button_invalid');
+            // addCardButton.disabled = true
         },
+        handleFormSubmit: () => {
+            popupAddCardForm.close(popupAddImage)
+            
+        }
     }
     ,
-    popupAddImage);
+    popupAddImage, popupformAdd);
 
-const openTwo = () => {
-    popupWithFormTwo.setEventListeners()
-    popupWithFormTwo.open();
-
+function toggleImageAddPopup(){
+    popupAddCardForm.setEventListeners()
+    
 }
+toggleImageAddPopup()
+
+
+// function newCard(){
+//     const card = new Card(inputTitle.value, inputLink.value, templateElement);
+// }
+// newCard()
+
 
 const addPopup = () => {
-    popupWithFormTwo._getInput()
+    popupAddCardForm._getInput()
 }
-addCardButton.addEventListener('click', addPopup)
-
-const openPopupFirst = new Popup(popupEditUserProfile);
-const openSecondPopup = new Popup(popupAddImage);
-
-
+// addCardButton.addEventListener('click', addPopup)
 
 // функция для октрытия первого попапа
-const showPopup = () => {
 
-    openPopupFirst.setEventListeners();
-    openPopupFirst.open();
-
-}
 //функция для закрытия первого попапа
 const closePopupF = (item) => {
     item.close()
@@ -129,37 +139,37 @@ const closePopupF = (item) => {
 
 
 const closePopupImage = new Popup(popupToggleBigImage)
-function closePopup() {
-    closePopupImage.close()
-}
-function openPopup(popup) {
-    popup.classList.add('popup_opened')
-
-}
 
 
 
 //функция закрытия второго попапа
 function closeAddCardPopup() {
-    popupWithFormTwo.setEventListeners()
-    popupWithFormTwo.close(formTypeAddImage)
+    popupAddCardForm.setEventListeners()
+    popupAddCardForm.close(formTypeAddImage)
 }
+const popapOpenAndCloseImage = new Popup(popupToggleBigImage)
 
-popupCloseGeneral.addEventListener('click', closePopupF(openSecondPopup))
-openEditProfileButton.addEventListener('click', showPopup);
-closeEditUserProfileButton.addEventListener('click', closePopupF(openPopupFirst));
-openAddCardPopupButton.addEventListener('click', openTwo)
+
+popupCloseGeneral.addEventListener('click', closePopupF(popupAddCardForm))
+openEditProfileButton.addEventListener('click', ()=>{
+    editPofileSubmit.setEventListeners();
+    editPofileSubmit.open();
+});
+closeEditUserProfileButton.addEventListener('click', closePopupF(editPofileSubmit));
+openAddCardPopupButton.addEventListener('click', ()=>{
+        popupAddCardForm.setEventListeners()
+        popupAddCardForm.open();
+    })
 closeAddCardPopupButton.addEventListener('click', closeAddCardPopup);
-closeImageButton.addEventListener('click', closePopup)
+closeImageButton.addEventListener('click', ()=>{
+    popapOpenAndCloseImage.close();
+})
+
+
 
 
 const profileFormValidity = new FormValidator();
-profileFormValidity.enableValidation(valdationConfig)
-
-
-function popupOpenBig() {
-
-}
+profileFormValidity.enableValidation(valdationConfig);
 
 
 export function handleCardClick(link, name, popup) {
@@ -169,9 +179,7 @@ export function handleCardClick(link, name, popup) {
     imageFull.src = link;
     imageText.textContent = name;
     imageFull.alt = name;
-
-    const popupBig = document.querySelector('.popup_big_img')
-    popup = openPopup(popupBig)
+    popup = popapOpenAndCloseImage.open()
 
     closePopupImage.setEventListeners()
 }

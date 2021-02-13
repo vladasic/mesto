@@ -6,7 +6,9 @@ export class FormValidator{
        this._button = button;
        this._isActive = isActive;
        this._config = config;
-    } // тут ошибок нет
+    } // и тут я совсем не смог понять, ведь если воспользоваться 
+    //this._submitButton = this._form.querySelector(config.submitButtonSelector);  он выдаст ошибку в консоли, так
+    //как не сможет определить зачнеие this._form
 
 
     _showError(form, input, config) {

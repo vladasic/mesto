@@ -1,13 +1,14 @@
-import '../pages/index.css'
+import './pages/index.css'
 
-import { initialCards } from '../scripts/initial-сards.js';
-import { Card } from '../scripts/classes/Card.js';
-import { valdationConfig } from '../scripts/valdationConfig.js'
-import { FormValidator } from '../scripts/classes/FormValidator.js';
-import { Section } from '../scripts/classes/Section.js';
-import { Popup } from '../scripts/classes/Popup.js';
-import { PopupWithImage } from '../scripts/classes/PopupWithImage.js';
-import { PopupWithForm } from '../scripts/classes/PopupWithForm.js';
+import { initialCards } from './scripts/initial-сards.js';
+import { Card } from './scripts/classes/Card.js';
+import { valdationConfig } from './scripts/valdationConfig.js'
+import { FormValidator } from './scripts/classes/FormValidator.js';
+import { Section } from './scripts/classes/Section.js';
+import { Popup } from './scripts/classes/Popup.js';
+import { PopupWithImage } from './scripts/classes/PopupWithImage.js';
+import { PopupWithForm } from './scripts/classes/PopupWithForm.js';
+import { UserInfo } from './scripts/classes/UserInfo.js'
 import {
     openEditProfileButton,
     profileSubttitle,
@@ -31,17 +32,29 @@ import {
     popupCloseGeneral,
     popupformAdd
 }
-    from '../scripts/utils/contstants.js';
+    from './scripts/utils/contstants.js';
 
-//тут класс рендера карточек на страницу
-//объявленная внутри константа добавляет в большой попап информацию, наследуя name и link из класса Card
+
+
+
+
+
 const section = new Section({
     items: initialCards,
     renderer: () => {
-
         const cardClasses = initialCards.map(({ name, link }) =>
-        (new Card(name, link, templateElement,
-            openBigImage.openPopupImg(name, link)
+        (new Card({
+            handleCardClick: (link, name, popup) => {
+                const imageText = document.querySelector('.popup__image-text_for_full')
+                const imageFull = document.querySelector('.popup__image-opened')
+
+                imageFull.src = link;
+                imageText.textContent = name;
+                imageFull.alt = name;
+                popup = popapOpenAndCloseImage.open()
+            }
+        }, name, link, templateElement,
+            // openBigImage.openPopupImg(name, link)
         ))
         );
         const cardElements = cardClasses.map(card => (card.createCard()))
@@ -57,16 +70,21 @@ section.renderItems() //активация функции рендера на с
 
 
 
-//первая форма готово
 
+
+
+
+const userInfo = new UserInfo('profile__title', 'profile__subtitle')
+
+
+//извините что снова присылаю вам не исправленную работу но никто не смог отвтеить на мой вопрос
+// промучался с формами весь день, и так и не смог понять куда я должен вставлять полученный результат
 const editPofileSubmit = new PopupWithForm({
-    getInputsValues: () => {
-        profileTitle.textContent = inputName.value;
-        profileSubttitle.textContent = inputProfession.value;
-        // editPofileSubmit.close();
-    },
-    handleFormSubmit: () => {
-        editPofileSubmit._getInput();
+    handleFormSubmit: (data) => {
+        
+        userInfo.setUserInfo(inputName, inputProfession)
+        console.log(userInfo.setUserInfo())
+        
         editPofileSubmit.close(popupEditUserProfile)
     }
 },
@@ -76,111 +94,69 @@ editPofileSubmit.setEventListeners()
 
 
 
-//функция выrлючения первой формы
-// const submitFormEdit = () => {
-//     editPofileSubmit._getInput()
-//     editPofileSubmit.close(popupEditUserProfile)
-
-// }
-
-// popupContainer.addEventListener('submit', submitFormEdit)
 
 
-//под нами вторая вариация нажатия сабмита формы второй формы 
 
 
-function addNewCard(){
+
+
+
+
+
+
+
+
+function addNewCard() {
     const card = new Card(inputTitle.value, inputLink.value, templateElement);
     const cardElement = card.createCard();
-    
-    listContainerElements.prepend(cardElement);
+
+    section.addItems(cardElement);
 }
 
 const popupAddCardForm = new PopupWithForm(
     {
-        getInputsValues: () => {
-            addNewCard()       
-            // addNewCard()
-            // addCardButton.classList.add('popup__button_invalid');
-            // addCardButton.disabled = true
-        },
-        handleFormSubmit: () => {
+        handleFormSubmit: (data) => {
+            addNewCard(data)
+            console.log(popupAddCardForm._getInputValues())
             popupAddCardForm.close(popupAddImage)
-            
         }
     }
     ,
     popupAddImage, popupformAdd);
 
-function toggleImageAddPopup(){
-    popupAddCardForm.setEventListeners()
-    
-}
-toggleImageAddPopup()
-
-
-// function newCard(){
-//     const card = new Card(inputTitle.value, inputLink.value, templateElement);
-// }
-// newCard()
-
-
-const addPopup = () => {
-    popupAddCardForm._getInput()
-}
-// addCardButton.addEventListener('click', addPopup)
-
-// функция для октрытия первого попапа
-
-//функция для закрытия первого попапа
-const closePopupF = (item) => {
-    item.close()
-}
-
-
-const closePopupImage = new Popup(popupToggleBigImage)
 
 
 
-//функция закрытия второго попапа
-function closeAddCardPopup() {
-    popupAddCardForm.setEventListeners()
-    popupAddCardForm.close(formTypeAddImage)
-}
+
+
 const popapOpenAndCloseImage = new Popup(popupToggleBigImage)
+function allPopupCloseAndAdd() {
+    function closeAddCardPopup() {
+        popupAddCardForm.setEventListeners()
+        popupAddCardForm.close(formTypeAddImage)
+    }
 
 
-popupCloseGeneral.addEventListener('click', closePopupF(popupAddCardForm))
-openEditProfileButton.addEventListener('click', ()=>{
-    editPofileSubmit.setEventListeners();
-    editPofileSubmit.open();
-});
-closeEditUserProfileButton.addEventListener('click', closePopupF(editPofileSubmit));
-openAddCardPopupButton.addEventListener('click', ()=>{
+
+    popupAddCardForm.close()
+    openEditProfileButton.addEventListener('click', () => {
+        editPofileSubmit.setEventListeners();
+        editPofileSubmit.open();
+    });
+    popupAddCardForm.close()
+    openAddCardPopupButton.addEventListener('click', () => {
         popupAddCardForm.setEventListeners()
         popupAddCardForm.open();
     })
-closeAddCardPopupButton.addEventListener('click', closeAddCardPopup);
-closeImageButton.addEventListener('click', ()=>{
-    popapOpenAndCloseImage.close();
-})
+    closeAddCardPopupButton.addEventListener('click', closeAddCardPopup);
+    closeImageButton.addEventListener('click', () => {
+        popapOpenAndCloseImage.close();
+    })
 
-
-
+}
+allPopupCloseAndAdd()
 
 const profileFormValidity = new FormValidator();
 profileFormValidity.enableValidation(valdationConfig);
 
-
-export function handleCardClick(link, name, popup) {
-    const imageText = document.querySelector('.popup__image-text_for_full')
-    const imageFull = document.querySelector('.popup__image-opened')
-
-    imageFull.src = link;
-    imageText.textContent = name;
-    imageFull.alt = name;
-    popup = popapOpenAndCloseImage.open()
-
-    closePopupImage.setEventListeners()
-}
 

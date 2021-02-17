@@ -1,162 +1,134 @@
-import './pages/index.css'
+import "./index.css";
 
-import { initialCards } from './scripts/initial-сards.js';
-import { Card } from './scripts/classes/Card.js';
-import { valdationConfig } from './scripts/valdationConfig.js'
-import { FormValidator } from './scripts/classes/FormValidator.js';
-import { Section } from './scripts/classes/Section.js';
-import { Popup } from './scripts/classes/Popup.js';
-import { PopupWithImage } from './scripts/classes/PopupWithImage.js';
-import { PopupWithForm } from './scripts/classes/PopupWithForm.js';
-import { UserInfo } from './scripts/classes/UserInfo.js'
+import { initialCards } from "./scripts/initial-сards.js";
+import { Card } from "./scripts/classes/Card.js";
 import {
-    openEditProfileButton,
-    profileSubttitle,
-    popupEditUserProfile,
-    inputName,
-    inputProfession,
-    profileTitle,
-    popupContainer,
-    popupAddImage,
-    openAddCardPopupButton,
-    closeEditUserProfileButton,
-    closeAddCardPopupButton,
-    popupToggleBigImage,
-    closeImageButton,
-    formTypeAddImage,
-    listContainerElements,
-    inputTitle,
-    inputLink,
-    templateElement,
-    popupBig,
-    popupCloseGeneral,
-    popupformAdd
-}
-    from './scripts/utils/contstants.js';
+  validateConfigEditForm,
+  validateConfigAddCard,
+} from "./scripts/valdationConfig.js";
+import { FormValidator } from "./scripts/classes/FormValidator.js";
+import { Section } from "./scripts/classes/Section.js";
+import { PopupWithImage } from "./scripts/classes/PopupWithImage.js";
+import { PopupWithForm } from "./scripts/classes/PopupWithForm.js";
+import { UserInfo } from "./scripts/classes/UserInfo.js";
+import {
+  openEditProfileButton,
+  popupEditUserProfile,
+  inputName,
+  inputProfession,
+  popupContainer,
+  popupAddImage,
+  openAddCardPopupButton,
+  closeImageButton,
+  listContainerElements,
+  inputTitle,
+  inputLink,
+  templateElement,
+  popupBig,
+  popupformAdd,
+  submitFormBigImage,
+  addCardButton,
+  editForm,
+  inputEditFirst,
+  isActiveEditForm,
+  addPopupForm,
+  inputAddPopupFormFirst,
+  isActivePopupAddForm,
+} from "./scripts/utils/contstants.js";
 
-
-
-
-
-
-const section = new Section({
+const section = new Section(
+  {
     items: initialCards,
     renderer: () => {
-        const cardClasses = initialCards.map(({ name, link }) =>
-        (new Card({
-            handleCardClick: (link, name, popup) => {
-                const imageText = document.querySelector('.popup__image-text_for_full')
-                const imageFull = document.querySelector('.popup__image-opened')
-
-                imageFull.src = link;
-                imageText.textContent = name;
-                imageFull.alt = name;
-                popup = popapOpenAndCloseImage.open()
-            }
-        }, name, link, templateElement,
-            // openBigImage.openPopupImg(name, link)
-        ))
-        );
-        const cardElements = cardClasses.map(card => (card.createCard()))
-
-        section.addItems(cardElements);
+      const cardClasses = initialCards.map(function ({ name, link }) {
+        addNewCard(name, link);
+      });
     },
-},
-    listContainerElements
+  },
+  listContainerElements
 );
-const openBigImage = new PopupWithImage(popupBig)
-section.renderItems() //активация функции рендера на странице
 
+const openBigImage = new PopupWithImage(popupBig);
+openBigImage.setEventListeners();
+section.renderItems(); //активация функции рендера на странице
 
+const userInfo = new UserInfo("profile__title", "profile__subtitle");
 
-
-
-
-
-
-const userInfo = new UserInfo('profile__title', 'profile__subtitle')
-
-
-//извините что снова присылаю вам не исправленную работу но никто не смог отвтеить на мой вопрос
-// промучался с формами весь день, и так и не смог понять куда я должен вставлять полученный результат
-const editPofileSubmit = new PopupWithForm({
+const editPofileSubmit = new PopupWithForm(
+  {
     handleFormSubmit: (data) => {
-        
-        userInfo.setUserInfo(inputName, inputProfession)
-        console.log(userInfo.setUserInfo())
-        
-        editPofileSubmit.close(popupEditUserProfile)
-    }
-},
-    popupEditUserProfile, popupContainer)
+      userInfo.setUserInfo(inputName.value, inputProfession.value);
 
-editPofileSubmit.setEventListeners()
+      editPofileSubmit.close();
+    },
+  },
+  popupEditUserProfile,
+  popupContainer
+);
 
+function addNewCard(name, link) {
+  const card = new Card(
+    {
+      handleCardClick: (name, link) => {
+        openBigImage.openPopupImg(name, link);
+      },
+    },
+    name,
+    link,
+    templateElement
+  );
 
+  const cardElement = card.createCard();
 
-
-
-
-
-
-
-
-
-
-
-
-
-function addNewCard() {
-    const card = new Card(inputTitle.value, inputLink.value, templateElement);
-    const cardElement = card.createCard();
-
-    section.addItems(cardElement);
+  listContainerElements.prepend(cardElement);
 }
 
 const popupAddCardForm = new PopupWithForm(
-    {
-        handleFormSubmit: (data) => {
-            addNewCard(data)
-            console.log(popupAddCardForm._getInputValues())
-            popupAddCardForm.close(popupAddImage)
-        }
-    }
-    ,
-    popupAddImage, popupformAdd);
+  {
+    handleFormSubmit: (data) => {
+      addNewCard(inputTitle.value, inputLink.value);
+      popupAddCardForm.close();
+      addCardButton.classList.add("popup__button_invalid");
+      addCardButton.disabled = true;
+    },
+  },
+  popupAddImage,
+  popupformAdd
+);
 
+popupAddCardForm.setEventListeners();
 
+editPofileSubmit.setEventListeners();
 
-
-
-
-const popapOpenAndCloseImage = new Popup(popupToggleBigImage)
 function allPopupCloseAndAdd() {
-    function closeAddCardPopup() {
-        popupAddCardForm.setEventListeners()
-        popupAddCardForm.close(formTypeAddImage)
-    }
+  openEditProfileButton.addEventListener("click", () => {
+    editPofileSubmit.open();
+  });
 
+  openAddCardPopupButton.addEventListener("click", () => {
+    popupAddCardForm.open();
+  });
 
-
-    popupAddCardForm.close()
-    openEditProfileButton.addEventListener('click', () => {
-        editPofileSubmit.setEventListeners();
-        editPofileSubmit.open();
-    });
-    popupAddCardForm.close()
-    openAddCardPopupButton.addEventListener('click', () => {
-        popupAddCardForm.setEventListeners()
-        popupAddCardForm.open();
-    })
-    closeAddCardPopupButton.addEventListener('click', closeAddCardPopup);
-    closeImageButton.addEventListener('click', () => {
-        popapOpenAndCloseImage.close();
-    })
-
+  closeImageButton.addEventListener("click", () => {
+    openBigImage.close();
+  });
 }
-allPopupCloseAndAdd()
+allPopupCloseAndAdd();
 
-const profileFormValidity = new FormValidator();
-profileFormValidity.enableValidation(valdationConfig);
+const profileEditForm = new FormValidator(
+  editForm,
+  inputEditFirst,
+  submitFormBigImage,
+  isActiveEditForm,
+  validateConfigEditForm
+);
+profileEditForm.enableValidation();
 
-
+const addCardForm = new FormValidator(
+  addPopupForm,
+  inputAddPopupFormFirst,
+  addCardButton,
+  isActivePopupAddForm,
+  validateConfigAddCard
+);
+addCardForm.enableValidation();

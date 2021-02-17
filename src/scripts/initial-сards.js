@@ -1,26 +1,32 @@
 export const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://images.unsplash.com/photo-1519941970202-b1883164af02?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80'
-    },
-    {
-        name: 'Челябинск',
-        link: 'https://images.unsplash.com/photo-1506202840536-ceec9f3dca06?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1500&q=80'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://images.unsplash.com/photo-1525228877792-0b309c425d36?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=968&q=80'
-    }
-]; 
+  {
+    name: "Новиград",
+    link:
+      "https://staticdelivery.nexusmods.com/images/952/4292399-1467621585.jpg",
+  },
+  {
+    name: "Вызима",
+    link:
+      "https://disgustingmen.com/wp-content/uploads/2018/10/30.jpg",
+  },
+  {
+    name: "Ривия",
+    link:
+      "https://static.wikia.nocookie.net/vedmak/images/7/70/%D0%A0%D0%B8%D0%B2%D0%B8%D1%8F_%28%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%29.jpg/revision/latest?cb=20181025114804",
+  },
+  {
+    name: "Боклер",
+    link:
+      "https://i.playground.ru/i/pix/2973221/image.jpg",
+  },
+  {
+    name: "Каэр-Морхен",
+    link:
+      "https://static-prod.weplay.tv/2019-08-05/576699e28ba5e36c9f9779533b182b5c_large_cover.jpeg",
+  },
+  {
+    name: "Скллиге",
+    link:
+      "https://cs10.pikabu.ru/post_img/big/2018/11/25/11/154317192616998011.jpg",
+  },
+];

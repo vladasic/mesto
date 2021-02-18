@@ -57,7 +57,7 @@ const userInfo = new UserInfo("profile__title", "profile__subtitle");
 const editPofileSubmit = new PopupWithForm(
   {
     handleFormSubmit: (data) => {
-      userInfo.setUserInfo(data['firstname'], data["lastname"]);
+      userInfo.setUserInfo(data["firstname"], data["lastname"]);
       editPofileSubmit.close();
     },
   },
@@ -105,13 +105,11 @@ function allPopupCloseAndAdd() {
     inputName.value = userData.userName;
     inputProfession.value = userData.userDescription;
     editPofileSubmit.open();
-  }); 
+  });
 
   openAddCardPopupButton.addEventListener("click", () => {
     popupAddCardForm.open();
   });
-
-  
 }
 allPopupCloseAndAdd();
 

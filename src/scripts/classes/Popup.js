@@ -20,14 +20,14 @@ export class Popup {
       ".popup__close-icon-general"
     );
 
-    this._closeIcon.addEventListener("mousedown", () => {
+    this._closeIcon.addEventListener("click", () => {
       this.close();
+    });
 
-      this._popupSelector.addEventListener("mousedown", (evt) => {
-        if (evt.target.classList.contains("popup")) {
-          this.close();
-        }
-      });
+    this._popupSelector.addEventListener("mousedown", (evt) => {
+      if (evt.target.classList.contains("popup")) {
+        this.close();
+      }
     });
   }
 

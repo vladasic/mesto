@@ -57,8 +57,7 @@ const userInfo = new UserInfo("profile__title", "profile__subtitle");
 const editPofileSubmit = new PopupWithForm(
   {
     handleFormSubmit: (data) => {
-      userInfo.setUserInfo(inputName.value, inputProfession.value);
-
+      userInfo.setUserInfo(data['firstname'], data["lastname"]);
       editPofileSubmit.close();
     },
   },
@@ -80,13 +79,13 @@ function addNewCard(name, link) {
 
   const cardElement = card.createCard();
 
-  listContainerElements.prepend(cardElement);
+  section.addItems(cardElement);
 }
 
 const popupAddCardForm = new PopupWithForm(
   {
     handleFormSubmit: (data) => {
-      addNewCard(inputTitle.value, inputLink.value);
+      addNewCard(data["cardName"], data["cardLink"]);
       popupAddCardForm.close();
       addCardButton.classList.add("popup__button_invalid");
       addCardButton.disabled = true;
@@ -102,16 +101,17 @@ editPofileSubmit.setEventListeners();
 
 function allPopupCloseAndAdd() {
   openEditProfileButton.addEventListener("click", () => {
+    const userData = userInfo.getUserInfo();
+    inputName.value = userData.userName;
+    inputProfession.value = userData.userDescription;
     editPofileSubmit.open();
-  });
+  }); 
 
   openAddCardPopupButton.addEventListener("click", () => {
     popupAddCardForm.open();
   });
 
-  closeImageButton.addEventListener("click", () => {
-    openBigImage.close();
-  });
+  
 }
 allPopupCloseAndAdd();
 

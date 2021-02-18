@@ -25,7 +25,7 @@ export const initialCards = [
       "https://static-prod.weplay.tv/2019-08-05/576699e28ba5e36c9f9779533b182b5c_large_cover.jpeg",
   },
   {
-    name: "Скллиге",
+    name: "скеллиге",
     link:
       "https://cs10.pikabu.ru/post_img/big/2018/11/25/11/154317192616998011.jpg",
   },

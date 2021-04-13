@@ -66,7 +66,7 @@ const editProfileSubmit = new PopupWthForm({
     editProfileSubmit.open()
  })
  
-const popupQuestion = document.querySelector('.popup__question')
+const popupQuestion = document.querySelector('.popup_question')
 const popupFormQuestion = document.querySelector('.popup__container_rounding')
 
 function addNewItem(name,link,like,cardId,trash){
@@ -78,7 +78,7 @@ function addNewItem(name,link,like,cardId,trash){
           const popupDelateCard = new PopupWthForm({handleFormSubmit: ()=>{}},popupQuestion,popupFormQuestion)
           popupDelateCard.setEventListeners()
           popupDelateCard.open()
-          document.querySelector('.element__button-question').addEventListener('click',()=>{
+          document.querySelector('.element__button_question').addEventListener('click',()=>{
             popupDelateCard.close()
           })
         },
@@ -113,7 +113,6 @@ const popupAddCard = new PopupWthForm({
      
       api.postNewCard(data['firstname'],data['lastname'])
       popupAddCard.close()
-      renderLoading(false)
       popupButtonAddImage.classList.add("popup__button_invalid");
       popupButtonAddImage.disabled = true;
     }
@@ -157,13 +156,3 @@ const addCardValidate = new FormValidator(
   validateConfigAddCard
 )
 addCardValidate.enableValidation()
-
-
-const popubButtonAll = document.querySelector('.popup__button')
-function renderLoading(isLoading){
-  if(isLoading){
-    popubButtonAll.textContent = 'Сохранение...'
-  }else{
-    popubButtonAll.textContent = 'Сохранить'
-  }
-}

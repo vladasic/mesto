@@ -78,7 +78,7 @@ function addNewItem(name,link,like,cardId,trash){
           const popupDelateCard = new PopupWthForm({handleFormSubmit: ()=>{}},popupQuestion,popupFormQuestion)
           popupDelateCard.setEventListeners()
           popupDelateCard.open()
-          document.querySelector('.element__button_question').addEventListener('click',()=>{
+          document.querySelector('.popup__button-question').addEventListener('click',()=>{
             popupDelateCard.close()
           })
         },

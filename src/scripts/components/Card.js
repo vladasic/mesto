@@ -42,7 +42,7 @@ export class Card{
         })
         this._element.querySelector(".element__trash").addEventListener('click',()=>{
             this._openDelCard()
-            document.querySelector('.element__button_question').addEventListener('click',()=>{
+            document.querySelector('.popup__button-question').addEventListener('click',()=>{
                 this._removeElement()
                 this._deleteFullCard()
             })
@@ -65,7 +65,7 @@ export class Card{
     returnMethodCardTrash(){
         return this._element.querySelector(".element__trash").addEventListener('click',()=>{
             this._openDelCard()
-            document.querySelector('.element__button_question').addEventListener('click',()=>{this._removeElement()})
+            document.querySelector('.popup__button-question').addEventListener('click',()=>{this._removeElement()})
         })
     }
     renderTrashIcon(){

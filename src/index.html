@@ -12,20 +12,25 @@
 <body>
   <div class="page">
     <header class="header">
-      <img class="header__logo" alt="логотип сайта" src="<%=require('./images/header__logo.svg')%>">
+      <img class="header__logo" alt="логотип сайта" src='<%=require("./images/header__logo.svg")%>'/>
 
     </header>
     <main>
       <section class="profile">
-        <img class="profile__avatar" alt="автор" src="<%=require('./images/geralt_avatar.jpg')%>">
-        <div class="profile__info">
-          <h1 class="profile__title">Геральд</h1>
-          <p class="profile__subtitle">Охотник на монстров</p>
-          <button type="button" aria-label="open" name="button-rename" class="profile__button profile__image">
-          </button>
+
+        <div class="pfrofile__edit">
+          <img class="profile__avatar" alt="автор" src='<%=require("./images/avatar_jak.jpg")%>'/>
         </div>
+          <div class="profile__info">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <p class="profile__subtitle">Исследователь океана</p>
+            <button type="button" aria-label="open" name="button-rename" class="profile__button profile__image">
+            </button>
+          </div>
+        
         <button type="button" name="button-add-new-img" class="profile__button-big">
-          <img src="<%=require('./images/vector.svg')%>" class="profile__image-button" alt="кнопка"></button>
+          <img src='<%=require("./images/vector.svg")%>' class="profile__image-button" alt="кнопка"></button>
+      
       </section>
       <ul class="elements">
       </ul>
@@ -36,78 +41,94 @@
 
 
     <section class="popup popup_type_user-profile">
-      <form class="popup__container popup__container_form_user popup__form-add" name="Form fromAll form1" method="post"
-        action="mailto:vlad.rastik@yandex.ru" novalidate>
+      <form class="popup__container popup__container_form_user popup__form-add" name="Form" method="post"
+        action="mailto:vlad.rastik@yandex.ru" novalidate >
         <button type="button" name="button-user-popup-close-icon"
-          class="popup__close-icon popup__close-icon_user-profile popup__close-icon-general">
-          <img src="<%=require('./images/close_icon.svg')%>" alt="выход"></button>
+          class="popup__close-icon popup__close-icon_user-profile popup_close-icon-general">
+          <img src='<%=require("./images/close_icon.svg")%>' alt="выход"></button>
         <div class="popup__main-container">
           <h2 class="popup__heading">Редактировать профиль</h2>
 
-          <input type="text" id='firstname-card' name="firstname" minlength="2" maxlength="40" required 
-            value="Геральд" class="popup__item popup__input popup__item_user-position_top popup__input_type_name popup__input-edit-profile">
+          <input type="text" id="firstname-card"  minlength="2" maxlength="40" required name="firstname" value="Жак-Ив Кусто" 
+          class="popup__item popup__input popup__item_user-position_top popup__input_type_name popup__input-edit-profile">
           <span id="firstname-card-error" class="popup__item-error error"></span>
 
-
-          <input type="text" id="lastname-card" minlength="2" maxlength="200" required name="lastname"
-            value="Охотник на монстров" class="popup__item popup__input popup__item_user-position_bottom popup__input-edit-profile">
+          
+          <input type="text" id="lastname-card" minlength="2" maxlength="200" required name="lastname" value="Исследователь океана"
+          class="popup__item popup__input popup__item_user-position_bottom popup__input-edit-profile" >
           <span id="lastname-card-error" class="popup__item-error error"></span>
 
 
         </div>
-        <button type="submit" name="buttonUserPopupSave"
-          class="popup__button popup__buttion-input popup__buttion-input-edit-form">Сохранить</button>
+        <button type="submit" name="buttonUser" class="popup__button popup__buttion-input popup__buttion-input-edit-form ">Сохранить</button>
       </form>
     </section>
 
     <section class="popup popup_add popup_type_add-images">
-      <form class="popup__container popup__form-add popup__container-add-images" name="formImg fromAll" method="post"
-        action="mailto:vlad.rastik@yandex.ru" novalidate>
-        <button type="button" name="button-image-close-icon"
-          class="popup__close-icon popup__close-icon_second popup__close-icon-general">
-          <img src="<%=require('./images/close_icon.svg')%>" alt="выход"></button>
+      <form class="popup__container popup__form-add popup__form-add-card" name="formImg" method="post" action="mailto:vlad.rastik@yandex.ru" novalidate>
+        <button type="button" name="button-image-close-icon" class="popup__close-icon popup__close-icon_second popup_close-icon-general">
+          <img src='<%=require("./images/close_icon.svg")%>' alt="выход"></button>
         <div class="popup__main-container">
-          <h2 class="popup__heading">Новое место</h2>
-
-          <input type="text" id="place-name" minlength="2" maxlength="40" required name="cardName"
-            placeholder="Название" value="" class="popup__item popup__input popup__item_add-images-position_top popup__item_add-img">
-          <span id="place-name-error" class="popup__item-error error"></span>
-
-
-          <input type="url" id="place-add-image" minlength="2" maxlength="200" required name="cardLink"
-            placeholder="Ссылка на картинку" value=""
+          <h2 class="popup__heading">Новое место</h2>        
+          <input type="text" id="place-name"  minlength="2" maxlength="40" required name="firstname" placeholder="Название" value=""
+            class="popup__item popup__input popup__item_add-images-position_top popup__item_add-img">
+            <span id="place-name-error" class="popup__item-error error"></span>
+          <input type="url" id="place-add-image" minlength="2" maxlength="200" required name="lastname" placeholder="Ссылка на картинку" value=""
             class="popup__item popup__input popup__item_add-images-position_bottom popup__item_add-img">
-          <span id="place-add-image-error" class="popup__item-error error"></span>
-
-
+            <span id="place-add-image-error" class="popup__item-error error"></span>
         </div>
-        <button type="submit" name="button-image-popup-add"
-          class="popup__button popup__button-add-image popup__buttion-input popup__button-add-image-form">создать</button>
+        <button type="submit" name="buttonPopupAdd"
+          class="popup__button popup__button-add-image popup__buttion-input ">создать</button>
       </form>
     </section>
 
     <template class='template'>
       <li class="element">
-        <button type="button" name="button7" class="element__trash ">
+        <button type="button" name="button7" class="element__trash">
         </button>
-        <img class="element__img" alt="национальное достояние" src="./images/add_Button.svg">
+        <img class="element__img " alt="национальное достояние" src='<%=require("./images/add_Button.svg")%>'/>
         <div class="element__group">
           <h3 class="element__text"></h3>
           <button type="button" name="button3" class="element__button"></button>
+          <p class='element__like-info'>0</p>
         </div>
       </li>
     </template>
 
     <div class="popup popup_big_img popup_type_big-images">
       <div class="popup__image-container">
-        <button type="button" name="button-big-image-popup-close"
-          class="popup__image-close popup__image-close_icon popup__close-icon-general ">
-          <img src="<%=require('./images/close_icon.svg')%>" class='popup__close-width' alt="выход">
+        <button type="button" name="button-big-image-popup-close" class="popup__image-close popup__image-close_icon popup_close-icon-general">
+          <img src='<%=require("./images/close_icon.svg")%>' class='popup__close-width' alt="выход">
         </button>
-        <img src="<%=require('./images/close_icon.svg')%>" alt="нажми чтобы добавить"
-          class='popup__image-opened popup__image-opened_full '>
+        <img src='<%=require("./images/add_Button.svg")%>' alt="нажми чтобы добавить" class='popup__image-opened popup__image-opened_full '>
         <p class="popup__image-text popup__image-text_for_full"></p>
       </div>
+    </div>
+
+    <div class="popup  popup__question ">
+      <form class="popup__container popup__container_rounding">
+        <button type="button" name="button-image-close-icon"
+          class="popup__close-icon popup__close-icon-second  popup__close-icon_up popup_close-icon-general">
+          <img src="<%=require('./images/close_icon.svg')%>" alt="выход"></button>
+        <p class="popup__text">Вы уверены?</p>
+        <button type="button"  class="popup__button  element__button-question ">Да</button>
+      </form>
+    </div>
+
+    <div class="popup popup__edit-avatar">
+      <form class="popup__container popup__container-edit-avatar">
+        <button type="submit" name="button-image-close-icon"
+          class="popup__close-icon popup__close-icon-second popup_close-icon-general">
+          <img src="<%=require('./images/close_icon.svg')%>" alt="выход"></button>
+          <div class="popup__main-container">
+            <h2 class="popup__heading">Обновить аватар</h2>
+  
+            <input type="url" id="place-name" minlength="2" maxlength="200" required name="urlavatar"
+               placeholder="url " value="" class="popup__item popup__input popup__input-edit-avatr">
+            <span id="place-name-error" class="popup__item-error error"></span> 
+          </div>
+        <button type="submit" name="button-edit-avatar" class="popup__button popup__button_margin  popup__buttion-input popup__button-avatar">Сохранить</button>
+      </form>
     </div>
   </div>
 </body>

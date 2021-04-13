@@ -1,4 +1,26 @@
 .profile__avatar{
+    
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.profile__avatar:hover{
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 590px){
+    .profile__avatar{
+        grid-column: 1/4;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .profile__avatar{
+        justify-self: center;
+    }
+}
+
+/* .profile__avatar{
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -13,4 +35,4 @@
     .profile__avatar{
         justify-self: center;
     }
-}
+} */

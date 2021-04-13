@@ -1,0 +1,29 @@
+export const escape = "Escape";
+export const openEditProfileButton = document.querySelector('.profile__button');
+export const popupEditUserProfile = document.querySelector('.popup_type_user-profile');
+export const popupContainer = popupEditUserProfile.querySelector('.popup__container_form_user');
+export const popupAddImage = document.querySelector('.popup_type_add-images');
+export const openAddCardPopupButton = document.querySelector('.profile__button-big');
+export const popupToggleBigImage = document.querySelector('.popup_type_big-images');
+export const closeImageButton = document.querySelector('.popup__image-close_icon');
+export const imageFull = document.querySelector('.popup__image-opened_full');
+export const imageText = document.querySelector('.popup__image-text_for_full');
+export const popupFormAdd = document.querySelector('.popup__form-add-card');
+export const popupButtonAddImage = document.querySelector('.popup__button-add-image');
+export const popupChangeAvatar = document.querySelector('.popup__edit-avatar');
+export const formEditAvater = document.querySelector('.popup__container-edit-avatar');
+export const openEditAvatar = document.querySelector('.pfrofile__edit')
+export const profileAvatar = document.querySelector('.profile__avatar')
+
+export const formSumbit = document.forms.Form
+export const formSubmitName = formSumbit.elements.firstname;
+export const formSubmitProff = formSumbit.elements.lastname;
+export const buttonSubmit = formSumbit.elements.buttonUser
+export const isActiveEditForm = formSubmitName.value.length > 0 && formSubmitProff.value.length > 0 ;
+
+export const formAddCard = document.forms.formImg;
+export const formAddCardName = formAddCard.elements.firstname;
+export const formAddCardLink = formAddCard.elements.lastname;
+export const buttonAddCard = formAddCard.elements.buttonPopupAdd;
+export const isActiveAddCardForm = formAddCardName.value.length > 0 && formAddCardLink.value.length > 0;
+export const likeInfo = document.querySelector('.element__like-info')

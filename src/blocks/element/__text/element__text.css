@@ -1,4 +1,6 @@
 .element__text{
+    align-self: center;
+    grid-area: text;
     margin: 0;
     font-family: 'Inter', ‘Arial’, sans-serif;
     font-style: normal;

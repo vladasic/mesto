@@ -10,9 +10,9 @@ export const imageFull = document.querySelector('.popup__image-opened_full');
 export const imageText = document.querySelector('.popup__image-text_for_full');
 export const popupFormAdd = document.querySelector('.popup__form-add-card');
 export const popupButtonAddImage = document.querySelector('.popup__button-add-image');
-export const popupChangeAvatar = document.querySelector('.popup__edit-avatar');
+export const popupChangeAvatar = document.querySelector('.popup_edit-avatar');
 export const formEditAvater = document.querySelector('.popup__container-edit-avatar');
-export const openEditAvatar = document.querySelector('.pfrofile__edit')
+export const openEditAvatar = document.querySelector('.profile__edit')
 export const profileAvatar = document.querySelector('.profile__avatar')
 
 export const formSumbit = document.forms.Form

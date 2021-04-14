@@ -1,16 +1,18 @@
 import {Popup} from "./Popup.js";
-import {imageFull, imageText} from "../utils/constatnts.js";
+
 
 export class PopupWithImage extends Popup{
     constructor(popupSelector){
         super(popupSelector);
         this._popupSelector = popupSelector;
+        this._iamgeFull = document.querySelector('.popup__image-opened_full');
+        this._imageText = document.querySelector('.popup__image-text_for_full');
     }
 
     open(name,link){
-      imageFull.src = link;
-      imageText.textContent = name;
-      imageText.alt = name;
+      this._iamgeFull.src = link;
+      this._imageText.textContent = name;
+      this._imageText.alt = name;
 
       super.open();
     }

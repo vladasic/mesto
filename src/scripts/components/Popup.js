@@ -15,7 +15,7 @@ export class Popup{
         document.removeEventListener('keydown', this._handleEscClose)
     }
     setEventListeners(){
-        this._closeIcon = this._popupSelector.querySelector('.popup__close-icon-general');
+        this._closeIcon = this._popupSelector.querySelector('.popup_close-icon-general');
         this._closeIcon.addEventListener('click',()=>{
             this.close()
         });

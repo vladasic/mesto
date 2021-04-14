@@ -18,7 +18,7 @@
     <main>
       <section class="profile">
 
-        <div class="profile__edit">
+        <div class="pfrofile__edit">
           <img class="profile__avatar" alt="автор" src='<%=require("./images/avatar_jak.jpg")%>'/>
         </div>
           <div class="profile__info">
@@ -44,7 +44,7 @@
       <form class="popup__container popup__container_form_user popup__form-add" name="Form" method="post"
         action="mailto:vlad.rastik@yandex.ru" novalidate >
         <button type="button" name="button-user-popup-close-icon"
-          class="popup__close-icon popup__close-icon_user-profile popup__close-icon-general">
+          class="popup__close-icon popup__close-icon_user-profile popup_close-icon-general">
           <img src='<%=require("./images/close_icon.svg")%>' alt="выход"></button>
         <div class="popup__main-container">
           <h2 class="popup__heading">Редактировать профиль</h2>
@@ -66,7 +66,7 @@
 
     <section class="popup popup_add popup_type_add-images">
       <form class="popup__container popup__form-add popup__form-add-card" name="formImg" method="post" action="mailto:vlad.rastik@yandex.ru" novalidate>
-        <button type="button" name="button-image-close-icon" class="popup__close-icon popup__close-icon_second popup__close-icon-general">
+        <button type="button" name="button-image-close-icon" class="popup__close-icon popup__close-icon_second popup_close-icon-general">
           <img src='<%=require("./images/close_icon.svg")%>' alt="выход"></button>
         <div class="popup__main-container">
           <h2 class="popup__heading">Новое место</h2>        
@@ -97,7 +97,7 @@
 
     <div class="popup popup_big_img popup_type_big-images">
       <div class="popup__image-container">
-        <button type="button" name="button-big-image-popup-close" class="popup__image-close popup__image-close_icon popup__close-icon-general">
+        <button type="button" name="button-big-image-popup-close" class="popup__image-close popup__image-close_icon popup_close-icon-general">
           <img src='<%=require("./images/close_icon.svg")%>' class='popup__close-width' alt="выход">
         </button>
         <img src='<%=require("./images/add_Button.svg")%>' alt="нажми чтобы добавить" class='popup__image-opened popup__image-opened_full '>
@@ -105,27 +105,27 @@
       </div>
     </div>
 
-    <div class="popup  popup_question ">
+    <div class="popup  popup__question ">
       <form class="popup__container popup__container_rounding">
         <button type="button" name="button-image-close-icon"
-          class="popup__close-icon popup__close-icon-second  popup__close-icon_up popup__close-icon-general">
+          class="popup__close-icon popup__close-icon-second  popup__close-icon_up popup_close-icon-general">
           <img src="<%=require('./images/close_icon.svg')%>" alt="выход"></button>
         <p class="popup__text">Вы уверены?</p>
-        <button type="button"  class="popup__button  popup__button-question">Да</button>
+        <button type="button"  class="popup__button  element__button-question ">Да</button>
       </form>
     </div>
 
-    <div class="popup popup_edit_avatar">
+    <div class="popup popup__edit-avatar">
       <form class="popup__container popup__container-edit-avatar">
         <button type="submit" name="button-image-close-icon"
-          class="popup__close-icon popup__close-icon-second popup__close-icon-general">
+          class="popup__close-icon popup__close-icon-second popup_close-icon-general">
           <img src="<%=require('./images/close_icon.svg')%>" alt="выход"></button>
           <div class="popup__main-container">
             <h2 class="popup__heading">Обновить аватар</h2>
   
-            <input type="url" id="edit-name" minlength="2" maxlength="200" required name="urlavatar"
+            <input type="url" id="place-name" minlength="2" maxlength="200" required name="urlavatar"
                placeholder="url " value="" class="popup__item popup__input popup__input-edit-avatr">
-            <span id="edit-name-error" class="popup__item-error error"></span> 
+            <span id="place-name-error" class="popup__item-error error"></span> 
           </div>
         <button type="submit" name="button-edit-avatar" class="popup__button popup__button_margin  popup__buttion-input popup__button-avatar">Сохранить</button>
       </form>

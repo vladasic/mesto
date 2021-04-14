@@ -9,7 +9,12 @@ export class Section{
     this._renderer()
   }
   
-  addItems(element){
-    this._container.append(element);
+  addItems(element,isArray){
+    if(isArray){
+      this._container.append(element);
+    }else{
+      this._container.prepend(element);
+    }
+    
   }
 }

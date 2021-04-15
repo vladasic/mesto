@@ -1,5 +1,5 @@
 export class Card{
-    constructor({handleCardClick, openDelCard,putleLike,delLike,deleteFullCard,userIdCard},name,link,like,cardId,cardSelector,trash){
+    constructor({handleCardClick, openDelCard,putleLike,delLike,deleteFullCard,userIdCard},name,link,like,cardId,cardSelector,trash,token){
         this._name = name;
         this._link = link;
         this._like = like;
@@ -12,7 +12,7 @@ export class Card{
         this._deleteFullCard = deleteFullCard;
         this._userIdCard = userIdCard;
         this._trash = trash;
-        this._myId = 'a5da0c289dddedfe7c89724d';
+        this._token = token;
     }
 
     _getTemplate(){
@@ -46,6 +46,7 @@ export class Card{
                 this._deleteFullCard()
             })
         })
+        this.renderTrashIcon()
 
     }
 
@@ -62,15 +63,16 @@ export class Card{
         this._element = null;
     }
 
-    returnMethodCardTrash(){
-        return this._element.querySelector(".element__trash").addEventListener('click',()=>{
-            this._openDelCard()
-            document.querySelector('.popup__button-question').addEventListener('click',()=>{this.removeElement()})
-        })
-    }
+    // returnMethodCardTrash(){
+    //     return this._element.querySelector(".element__trash").addEventListener('click',()=>{
+    //         this._openDelCard()
+    //         document.querySelector('.popup__button-question').addEventListener('click',()=>{this.removeElement()})
+    //     })
+    // }
     renderTrashIcon(){
-         if(this._trash !== this._myId){
+         if(this._trash !== this._token){
             this._trashCard.remove()
+
           }
     }
 

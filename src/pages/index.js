@@ -1,7 +1,7 @@
 import "./index.css"
 import { Card } from '../scripts/components/Card.js'
 import { initialCards,validateConfigEditForm,
-    validateConfigAddCard } from '../scripts/utils/utils.js'
+    validateConfigAddCard,renderLoading } from '../scripts/utils/utils.js'
 import { FormValidator } from '../scripts/components/FormValidator.js'
 import { Section } from '../scripts/components/Section.js';
 import { PopupWithImage } from '../scripts/components/PopupWithImage.js';
@@ -15,43 +15,24 @@ import {openEditProfileButton,popupEditUserProfile,popupContainer,popupAddImage,
 import { Api } from '../scripts/components/Api.js'; 
 
 
-const api = new Api('options')
+const api = new Api(`https://mesto.nomoreparties.co/v1/cohort-22`, '58232a31-4e24-43a3-8b98-3fa6f2453c70')
 function loadNewCard(){
- 
-  api.getInitialCards()
-  .then((cards)=>{        
-        cards.forEach((card)=>{
-          addNewItem(card.name,card.link,card.likes.length,card._id, card.owner._id)
-        })
-      })
-  api.getUserMe()
-    .then((me)=>{
-      userInfo.setUserInfo(me.name, me.about)
-      userInfo.setUserAvatar(me.avatar)
-      
-    })
-
   Promise.all([
     api.getUserMe(),
     api.getInitialCards()
   ])
   .then((values)=>{    //попадаем сюда когда оба промиса будут выполнены
     const [userData, initialCards] = values
-    
-    
-    
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setUserAvatar(userData.avatar);
+    initialCards.forEach((card)=>{
+                addNewItem(card.name,card.link,card.likes.length,card._id, card.owner._id)
+    })
   })
   .catch((err)=>{     //попадаем сюда если один из промисов завершаться ошибкой
-    console.log(err);
+    console.log(`${err}- ну ничего страшного, тяу тяу тяу`);
 })
-  
-//     api.getInitialCards()
-//     .then((cards)=>{        
-//         cards.forEach((card)=>{
-//           addNewItem(card.name,card.link,card.likes.length,card._id, card.owner._id)
-//         })
-//       })
-//       .catch((err)=>{console.log(err)})
+
 }
 
 
@@ -64,13 +45,6 @@ const section = new Section({items: initialCards,
       },
      },
     '.elements');
-  
-// api.getUserMe()
-//   .then((me)=>{
-//     userInfo.setUserInfo(me.name, me.about)
-//     userInfo.setUserAvatar(me.avatar)
-//   })
-//   .catch((err)=>{console.log(err)})
 
 
 const openBigImage = new PopupWithImage(popupToggleBigImage)
@@ -83,15 +57,13 @@ const editProfileSubmit = new PopupWthForm({
       api.patchUserMe(data["firstname"],data['lastname'])
         .then((info)=>{
           userInfo.setUserInfo(data["firstname"],data['lastname'])
-            })
-        .then((info)=>{
           editProfileSubmit.close()
-        })
+            })
         .catch((err)=>{
           console.log(`${err} - у нас тут вот такая ошибка, что-то сделай с этим!!`)
         })
         .finally(()=>{
-          document.querySelector('.popup__buttion-input-edit-form').textContent = 'Сохранить'
+          renderLoading(false,'.popup__buttion-input-edit-form')
         })
         // userInfo.setUserInfo(api.patchUserMe(data["firstname"],data['lastname']));
         // userInfo.setUserInfo(data["firstname"],data['lastname'])
@@ -111,7 +83,7 @@ const editProfileSubmit = new PopupWthForm({
 const popupQuestion = document.querySelector('.popup_question')
 const popupFormQuestion = document.querySelector('.popup__container_rounding')
 
-function addNewItem(name,link,like,cardId,trash){
+function addNewItem(name,link,like,cardId,trash,token){
     const card = new Card({
         handleCardClick: (name, link) =>{
             openBigImage.open(name,link)      
@@ -129,11 +101,17 @@ function addNewItem(name,link,like,cardId,trash){
             .then(()=>{
               card.handleIconClick()
             })
+            .catch((err)=>{
+              console.log(err)
+            })
         },
         delLike: () =>{
           api.delLikeCard(cardId)
             .then(()=>{
               card.handleDeleteClick()
+            })
+            .catch((err)=>{
+              console.log(err)
             })
         },
         deleteFullCard: () =>{
@@ -141,25 +119,23 @@ function addNewItem(name,link,like,cardId,trash){
             .then(()=>{
               card.removeElement()
             })
-        },
-        userIdCard: () =>{
-            api.getUserMe()
-            .then((me)=>{
-               console.log(me)
-             })
+            .catch((err)=>{
+              console.log(err)
+            })
         }
+
     },
     name,
     link,
     like,
     cardId,
     '.template',
-    trash
+    trash,
+    'a5da0c289dddedfe7c89724d'
     );
-
+    
     const cardElement = card.generateCard();
-    card.renderTrashIcon()
-
+    
     section.addItems(cardElement);
 }
 
@@ -168,7 +144,8 @@ const popupAddCard = new PopupWthForm({
     handleFormSubmit: (data)=>{
       api.postNewCard(data['firstname'],data['lastname'])
         .then(()=>{
-          addNewItem(data['firstname'],data['lastname']);
+            addNewItem(data['firstname'],data['lastname']);
+
         })
         .then(()=>{
           popupAddCard.close()
@@ -179,7 +156,7 @@ const popupAddCard = new PopupWthForm({
         {console.log(`${err} - у нас тут вот такая ошибка, что-то сделай с этим!!`)
       })
         .finally(()=>{
-          document.querySelector('.popup__button-add-image').textContent = 'создать'
+          renderLoading(false, '.popup__button-add-image')
         })
     }
 },popupAddImage, popupFormAdd
@@ -202,7 +179,8 @@ const popupEditAvatar = new PopupWthForm({
         {console.log(`${err} - у нас тут вот такая ошибка, что-то сделай с этим!!`)
       })
       .finally(()=>{
-        document.querySelector('.popup__button-avatar').textContent = 'Сохранить'
+        renderLoading(false, '.popup__button-avatar')
+        // document.querySelector('.popup__button-avatar').textContent = 'Сохранить'
       })
   }
 },popupChangeAvatar,formEditAvater

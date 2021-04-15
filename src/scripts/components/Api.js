@@ -1,28 +1,23 @@
 export class Api{
-    constructor(options){
-        this._options = options;
-        this._apiBaseUrl = `https://mesto.nomoreparties.co/v1/cohort-22`;
+    constructor(apiBaseUrl,token){
+        this._apiBaseUrl = apiBaseUrl;
+        this._token = token;
     }
 
     getInitialCards(){
        return fetch(`${this._apiBaseUrl}/cards`,{
         headers:{
-            authorization: '58232a31-4e24-43a3-8b98-3fa6f2453c70'
+            authorization: this._token
         }
     })
-        .then(res=>{
-            if(res.ok){
-               return res.json()
-            }
-            return Promise.reject(`Ошибка: ${res.status}`)
-        })
+        .then(this._getResponseData())
     }
 
     patchUserMe(name,about){
        return fetch(`${this._apiBaseUrl}/users/me`,{
           method: 'PATCH',
           headers:{
-            authorization: '58232a31-4e24-43a3-8b98-3fa6f2453c70',
+            authorization: this._token,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -36,7 +31,7 @@ export class Api{
     getUserMe(){
        return fetch(`${this._apiBaseUrl}/users/me`,{
            headers:{
-            authorization: '58232a31-4e24-43a3-8b98-3fa6f2453c70'
+            authorization: this._token
            }
        })
        .then(this._getResponseData())
@@ -46,7 +41,7 @@ export class Api{
         return fetch(`${this._apiBaseUrl}/cards`,{
             method: 'POST',
             headers:{
-                authorization: '58232a31-4e24-43a3-8b98-3fa6f2453c70',
+                authorization: this._token,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -62,7 +57,7 @@ export class Api{
         return fetch(`${this._apiBaseUrl}/users/me/avatar`,{
             method: 'PATCH',
             headers:{
-                authorization: '58232a31-4e24-43a3-8b98-3fa6f2453c70',
+                authorization: this._token,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -76,7 +71,7 @@ export class Api{
         return fetch(`${this._apiBaseUrl}/cards/likes/${cardId}`,{
             method: 'PUT',
             headers:{
-                authorization: '58232a31-4e24-43a3-8b98-3fa6f2453c70',
+                authorization: this._token,
                 'Content-Type': 'application/json'
             }
         })
@@ -86,7 +81,7 @@ export class Api{
         return fetch(`${this._apiBaseUrl}/cards/likes/${cardId}`,{
             method: 'DELETE',
             headers:{
-                authorization: '58232a31-4e24-43a3-8b98-3fa6f2453c70',
+                authorization: this._token,
                 'Content-Type': 'application/json'
             }
         })
@@ -97,7 +92,7 @@ export class Api{
         return fetch(`${this._apiBaseUrl}/cards/${cardId}`,{
             method:'DELETE',
             headers:{
-                authorization: '58232a31-4e24-43a3-8b98-3fa6f2453c70',
+                authorization: this._token,
                 'Content-Type': 'application/json'
             }
         })

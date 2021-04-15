@@ -40,3 +40,10 @@ export const validateConfigAddCard = {
     buttonInvalidClass: "popup__button_invalid",
   };
   
+  export function renderLoading(isLoading,selector){
+      if(isLoading){
+        document.querySelector(`${selector}`).textContent = 'Сохранение...'
+      }else{
+        document.querySelector(`${selector}`).textContent = 'Сохранить'
+      }
+  }

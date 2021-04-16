@@ -83,7 +83,7 @@ const editProfileSubmit = new PopupWthForm({
 const popupQuestion = document.querySelector('.popup_question')
 const popupFormQuestion = document.querySelector('.popup__container_rounding')
 
-function addNewItem(name,link,like,cardId,trash,token){
+function addNewItem(name,link,like,cardId,trash){
     const card = new Card({
         handleCardClick: (name, link) =>{
             openBigImage.open(name,link)      
@@ -143,9 +143,9 @@ function addNewItem(name,link,like,cardId,trash,token){
 const popupAddCard = new PopupWthForm({
     handleFormSubmit: (data)=>{
       api.postNewCard(data['firstname'],data['lastname'])
-        .then(()=>{
-            addNewItem(data['firstname'],data['lastname']);
-
+        .then((card)=>{
+          addNewItem(data['firstname'],data['lastname'],card.likes.length,card._id, card.owner._id);
+          console.log(card.likes.length)
         })
         .then(()=>{
           popupAddCard.close()

@@ -38,7 +38,7 @@ export class Api{
     }
 
     postNewCard(name,link){
-        return fetch(`${this._apiBaseUrl}/cards`,{
+       return  fetch(`${this._apiBaseUrl}/cards`,{
             method: 'POST',
             headers:{
                 authorization: this._token,
@@ -46,8 +46,7 @@ export class Api{
             },
             body: JSON.stringify({
                 name: name,
-                link: link,
-
+                link: link
             })
         })
         .then(this._getResponseData())

@@ -40,14 +40,13 @@ export class Card{
                 this._link,
             )
         })
-        this._element.querySelector(".element__trash").addEventListener('click',()=>{
+        this._trashCard.addEventListener('click',()=>{
             this._openDelCard()
             document.querySelector('.popup__button-question').addEventListener('click',()=>{
                 this._deleteFullCard()
             })
-        })
+          })
         this.renderTrashIcon()
-
     }
 
     handleIconClick(){
@@ -70,10 +69,10 @@ export class Card{
     //     })
     // }
     renderTrashIcon(){
-         if(this._trash !== this._token){
-            this._trashCard.remove()
 
-          }
+       if(this._trash !== this._token){
+          this._trashCard.remove()
+        }
     }
 
     generateCard(){
@@ -82,11 +81,12 @@ export class Card{
         this._element.querySelector('.element__text').textContent = this._name;
         this._element.querySelector('.element__img').src = this._link;
         this._element.querySelector('.element__like-info').textContent =  this._like;
-        this._likeInfo = this._element.querySelector('.element__like-info')
-        this._elementButton = this._element.querySelector('.element__button')
+        this._likeInfo = this._element.querySelector('.element__like-info');
+        this._elementButton = this._element.querySelector('.element__button');
         this._trashCard = this._element.querySelector(".element__trash");
-        this._setEventListeners()
-        
+
+        this._setEventListeners();
+  
         return this._element
     }
 }
